@@ -17,6 +17,7 @@ struct CardCarouselView: View {
             HStack(spacing: 10) {
                 ForEach(wallet.cards.indices, id: \.self) { index in
                     CardCarouselCellView(card: wallet.cards[index])
+                    // TODO: - Select card on apresentation
                         .onTapGesture {
                             wallet.cards.indices.forEach { index in
                                 wallet.cards[index].isSelected = false

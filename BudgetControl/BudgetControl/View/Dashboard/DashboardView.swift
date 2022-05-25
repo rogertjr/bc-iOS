@@ -10,6 +10,7 @@ import SwiftUI
 struct DashboardView: View {
     // MARK: - Properties
     @StateObject private var viewModel = DashboardViewModel()
+    @Namespace var animation
     
     // MARK: - Subviews
     var welcomeHeaderView: some View {
@@ -66,7 +67,11 @@ struct DashboardView: View {
                     settingsButtonHeaderView
                 }
                 CardCarouselView()
-                TransactionsListView()
+                customSegmentedControl()
+                    .padding(.top)
+                
+                TransactionsListView(shouldFilter: true,
+                                     filterSelected: viewModel.filterTabSelected)
                     .padding(.top)
             }
             .padding()
@@ -98,6 +103,37 @@ struct DashboardView: View {
                 .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
         }
         .padding()
+    }
+    
+    @ViewBuilder
+    func customSegmentedControl() -> some View {
+        HStack(spacing: 0) {
+            ForEach([TransactionType.income, TransactionType.expense],id: \.rawValue) { tab in
+                Text(tab.rawValue.capitalized)
+                    .fontWeight(.semibold)
+                    .foregroundColor(viewModel.filterTabSelected == tab ? .white : .black)
+                    .opacity(viewModel.filterTabSelected == tab ? 1 : 0.7)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: .infinity)
+                    .background(content: {
+                        if viewModel.filterTabSelected == tab {
+                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                .fill(.blue)
+                                .matchedGeometryEffect(id: "TAB", in: animation)
+                        }
+                    })
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        withAnimation{ viewModel.filterTabSelected = tab }
+                    }
+            }
+        }
+        .padding(5)
+        .background {
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .fill(.white)
+        }
+        .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
     }
 }
 
