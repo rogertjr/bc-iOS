@@ -8,9 +8,9 @@
 import SwiftUI
 
 enum TransactionType: String {
-    case income = "Income"
-    case expense = "expenses"
-    case all = "ALL"
+    case income = "Entrada"
+    case expense = "Saída"
+    case all = "Todos"
 }
 
 struct Transaction: Identifiable, Hashable {

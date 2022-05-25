@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DashboardView: View {
     // MARK: - Properties
+    @StateObject private var viewModel = DashboardViewModel()
     
     // MARK: - Subviews
     var welcomeHeaderView: some View {
@@ -70,6 +71,10 @@ struct DashboardView: View {
             }
             .padding()
         }
+        .fullScreenCover(isPresented: $viewModel.goToNewTransaction) {
+        } content: {
+            NewTransactionView()
+        }
         .overlay(alignment: .bottomTrailing) {
             addButton()
         }
@@ -80,6 +85,7 @@ struct DashboardView: View {
     func addButton() -> some View{
         Button {
             // TODO: - Create implementation
+            viewModel.goToNewTransaction.toggle()
         } label: {
             Image(systemName: "plus")
                 .font(.system(size: 25, weight: .medium))
@@ -95,6 +101,7 @@ struct DashboardView: View {
     }
 }
 
+// MARK: - PreviewProvider
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()

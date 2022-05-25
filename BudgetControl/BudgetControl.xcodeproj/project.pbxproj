@@ -18,6 +18,9 @@
 		375911A7283E6C0A003B6DAC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911A6283E6C0A003B6DAC /* Transaction.swift */; };
 		375911AA283E7198003B6DAC /* TransactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911A9283E7198003B6DAC /* TransactionsListView.swift */; };
 		375911AD283E7262003B6DAC /* TransactionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911AC283E7262003B6DAC /* TransactionCellView.swift */; };
+		375911B0283E814B003B6DAC /* NewTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911AF283E814B003B6DAC /* NewTransactionView.swift */; };
+		375911B3283E823B003B6DAC /* NewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911B2283E823B003B6DAC /* NewTransactionViewModel.swift */; };
+		375911B5283E8766003B6DAC /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911B4283E8766003B6DAC /* DashboardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		375911A6283E6C0A003B6DAC /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		375911A9283E7198003B6DAC /* TransactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListView.swift; sourceTree = "<group>"; };
 		375911AC283E7262003B6DAC /* TransactionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellView.swift; sourceTree = "<group>"; };
+		375911AF283E814B003B6DAC /* NewTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionView.swift; sourceTree = "<group>"; };
+		375911B2283E823B003B6DAC /* NewTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionViewModel.swift; sourceTree = "<group>"; };
+		375911B4283E8766003B6DAC /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +55,7 @@
 		37591178283DBA3B003B6DAC = {
 			isa = PBXGroup;
 			children = (
+				375911B4283E8766003B6DAC /* DashboardViewModel.swift */,
 				37591183283DBA3B003B6DAC /* BudgetControl */,
 				37591182283DBA3B003B6DAC /* Products */,
 			);
@@ -94,6 +101,7 @@
 		37591193283DBAEC003B6DAC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				375911AE283E813A003B6DAC /* NewTransaction */,
 				37591194283DBAF4003B6DAC /* Dashboard */,
 			);
 			path = View;
@@ -184,6 +192,23 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		375911AE283E813A003B6DAC /* NewTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				375911B1283E8230003B6DAC /* ViewModel */,
+				375911AF283E814B003B6DAC /* NewTransactionView.swift */,
+			);
+			path = NewTransaction;
+			sourceTree = "<group>";
+		};
+		375911B1283E8230003B6DAC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				375911B2283E823B003B6DAC /* NewTransactionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -256,8 +281,11 @@
 			files = (
 				375911A7283E6C0A003B6DAC /* Transaction.swift in Sources */,
 				3759119A283E6A0A003B6DAC /* WalletManager.swift in Sources */,
+				375911B0283E814B003B6DAC /* NewTransactionView.swift in Sources */,
+				375911B5283E8766003B6DAC /* DashboardViewModel.swift in Sources */,
 				375911A2283E6B19003B6DAC /* CardCarouselView.swift in Sources */,
 				375911A4283E6B28003B6DAC /* CardCarouselCellView.swift in Sources */,
+				375911B3283E823B003B6DAC /* NewTransactionViewModel.swift in Sources */,
 				37591196283DBB12003B6DAC /* DashboardView.swift in Sources */,
 				375911AA283E7198003B6DAC /* TransactionsListView.swift in Sources */,
 				375911AD283E7262003B6DAC /* TransactionCellView.swift in Sources */,
