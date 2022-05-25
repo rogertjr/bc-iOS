@@ -11,6 +11,13 @@
 		37591189283DBA3E003B6DAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37591188283DBA3E003B6DAC /* Assets.xcassets */; };
 		3759118C283DBA3E003B6DAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3759118B283DBA3E003B6DAC /* Preview Assets.xcassets */; };
 		37591196283DBB12003B6DAC /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37591195283DBB12003B6DAC /* DashboardView.swift */; };
+		3759119A283E6A0A003B6DAC /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37591199283E6A0A003B6DAC /* WalletManager.swift */; };
+		3759119D283E6A2A003B6DAC /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3759119C283E6A2A003B6DAC /* Card.swift */; };
+		375911A2283E6B19003B6DAC /* CardCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911A1283E6B19003B6DAC /* CardCarouselView.swift */; };
+		375911A4283E6B28003B6DAC /* CardCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911A3283E6B28003B6DAC /* CardCarouselCellView.swift */; };
+		375911A7283E6C0A003B6DAC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911A6283E6C0A003B6DAC /* Transaction.swift */; };
+		375911AA283E7198003B6DAC /* TransactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911A9283E7198003B6DAC /* TransactionsListView.swift */; };
+		375911AD283E7262003B6DAC /* TransactionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911AC283E7262003B6DAC /* TransactionCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,13 @@
 		37591188283DBA3E003B6DAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3759118B283DBA3E003B6DAC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		37591195283DBB12003B6DAC /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		37591199283E6A0A003B6DAC /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
+		3759119C283E6A2A003B6DAC /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		375911A1283E6B19003B6DAC /* CardCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCarouselView.swift; sourceTree = "<group>"; };
+		375911A3283E6B28003B6DAC /* CardCarouselCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCarouselCellView.swift; sourceTree = "<group>"; };
+		375911A6283E6C0A003B6DAC /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		375911A9283E7198003B6DAC /* TransactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListView.swift; sourceTree = "<group>"; };
+		375911AC283E7262003B6DAC /* TransactionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +65,8 @@
 		37591183283DBA3B003B6DAC /* BudgetControl */ = {
 			isa = PBXGroup;
 			children = (
+				3759119E283E6AF7003B6DAC /* Util */,
+				37591197283E69FA003B6DAC /* Data */,
 				37591193283DBAEC003B6DAC /* View */,
 				37591192283DBAE4003B6DAC /* App */,
 				37591188283DBA3E003B6DAC /* Assets.xcassets */,
@@ -89,6 +105,83 @@
 				37591195283DBB12003B6DAC /* DashboardView.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		37591197283E69FA003B6DAC /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3759119B283E6A1F003B6DAC /* Model */,
+				37591198283E6A00003B6DAC /* Manager */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		37591198283E6A00003B6DAC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				37591199283E6A0A003B6DAC /* WalletManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		3759119B283E6A1F003B6DAC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3759119C283E6A2A003B6DAC /* Card.swift */,
+				375911A6283E6C0A003B6DAC /* Transaction.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3759119E283E6AF7003B6DAC /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				3759119F283E6AFD003B6DAC /* Component */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		3759119F283E6AFD003B6DAC /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				375911A8283E7104003B6DAC /* Transactions */,
+				375911A0283E6B08003B6DAC /* CardCarousel */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		375911A0283E6B08003B6DAC /* CardCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				375911A5283E6B2C003B6DAC /* Cell */,
+				375911A1283E6B19003B6DAC /* CardCarouselView.swift */,
+			);
+			path = CardCarousel;
+			sourceTree = "<group>";
+		};
+		375911A5283E6B2C003B6DAC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				375911A3283E6B28003B6DAC /* CardCarouselCellView.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		375911A8283E7104003B6DAC /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				375911AB283E71A1003B6DAC /* Cell */,
+				375911A9283E7198003B6DAC /* TransactionsListView.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		375911AB283E71A1003B6DAC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				375911AC283E7262003B6DAC /* TransactionCellView.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,8 +254,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				375911A7283E6C0A003B6DAC /* Transaction.swift in Sources */,
+				3759119A283E6A0A003B6DAC /* WalletManager.swift in Sources */,
+				375911A2283E6B19003B6DAC /* CardCarouselView.swift in Sources */,
+				375911A4283E6B28003B6DAC /* CardCarouselCellView.swift in Sources */,
 				37591196283DBB12003B6DAC /* DashboardView.swift in Sources */,
+				375911AA283E7198003B6DAC /* TransactionsListView.swift in Sources */,
+				375911AD283E7262003B6DAC /* TransactionCellView.swift in Sources */,
 				37591185283DBA3C003B6DAC /* BudgetControlApp.swift in Sources */,
+				3759119D283E6A2A003B6DAC /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
