@@ -14,10 +14,11 @@
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="transactions" inverseEntity="Card"/>
     </entity>
     <elements>
         <element name="Card" positionX="-54" positionY="-9" width="128" height="133"/>
-        <element name="Transaction" positionX="108.58984375" positionY="109.9453125" width="128" height="133"/>
+        <element name="Transaction" positionX="108.58984375" positionY="109.9453125" width="128" height="148"/>
     </elements>
 </model>

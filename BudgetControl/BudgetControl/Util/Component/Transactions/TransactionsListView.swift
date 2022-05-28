@@ -25,16 +25,19 @@ struct TransactionsListView: View {
     var body: some View {
         VStack(spacing: 16) {
             headerLabel
-            if shouldFilter {
-//                ForEach(selectedCard.transactions.filter { return $0.type == filterSelected }) { transaction in
-//                    TransactionCellView(transaction: transaction)
-//                }
-                EmptyView()
-            } else {
-                // TODO: FILTER by isSelected
-                ForEach(cards[0].transactionList) { transaction in
-                    TransactionCellView(transaction: transaction)
+            
+            if let selectedCard = cards.filter({ $0.isSelected == true }).first {
+                if shouldFilter {
+                    ForEach(selectedCard.transactionList.filter { return $0.type == filterSelected }) { transaction in
+                        TransactionCellView(transaction: transaction)
+                    }
+                } else {
+                    ForEach(selectedCard.transactionList) { transaction in
+                        TransactionCellView(transaction: transaction)
+                    }
                 }
+            } else {
+                EmptyView()
             }
         }
     }

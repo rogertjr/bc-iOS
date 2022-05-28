@@ -16,7 +16,7 @@ final class NewTransactionViewModel: ObservableObject {
     private var selectedCard: Card?
     
     @Published var amount: String = ""
-//    @Published var type: TransactionType = .all
+    @Published var type: TransactionType = .all
     @Published var date: Date = Date()
     @Published var description: String = ""
     
@@ -39,22 +39,27 @@ final class NewTransactionViewModel: ObservableObject {
     }
     
     // MARK: - Data Persistence
+    #warning("CREATE MODEL EXTENSION FOR PERSISTENCE")
     func saveNewTransaction() -> Bool {
         guard let selectedCard = selectedCard else { return false }
 
+        // MARK: - Temporary ========
 //        let card = Card(context: context)
 //        card.id = UUID()
 //        card.creationDate = Date()
 //        card.isSelected = true
 //        card.title = "Nubank"
-//
+        // MARK: - Temporary ========
+        
         let transaction = Transaction(context: context)
         transaction.id = UUID()
         transaction.title = description
         transaction.color = "red"
         transaction.amount = amount
+        transaction.type = type.rawValue
+        #warning("theres a bug when changing date on datepicker")
         transaction.date = date
-        
+                
         selectedCard.addToTransactions(transaction)
         
         do {

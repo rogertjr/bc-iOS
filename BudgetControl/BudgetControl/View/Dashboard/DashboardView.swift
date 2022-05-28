@@ -65,6 +65,12 @@ struct DashboardView: View {
         }
     }
     
+    #warning("Use empty compenents view instead")
+    var emptyDashboardView: some View {
+        Text("Não há transações ou cartões :(")
+            .padding(.top)
+    }
+    
     // MARK: - Layout
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -74,14 +80,19 @@ struct DashboardView: View {
                     profileButtonHeaderView
                     settingsButtonHeaderView
                 }
-                CardCarouselView(cards: viewModel.cards)
-//                customSegmentedControl()
-//                    .padding(.top)
                 
-                TransactionsListView(cards: viewModel.cards,
-                                     shouldFilter: false,
-                                     filterSelected: viewModel.filterTabSelected)
-                    .padding(.top)
+                if viewModel.cards.count > 0 {
+                    CardCarouselView(cards: viewModel.cards)
+                    customSegmentedControl()
+                        .padding(.top)
+                    
+                    TransactionsListView(cards: viewModel.cards,
+                                         shouldFilter: true,
+                                         filterSelected: viewModel.filterTabSelected)
+                        .padding(.top)
+                } else {
+                    emptyDashboardView
+                }
             }
             .padding()
         }

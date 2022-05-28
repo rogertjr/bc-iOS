@@ -20,6 +20,7 @@ extension Transaction {
     @NSManaged public var date: Date
     @NSManaged public var color: String?
     @NSManaged public var id: UUID
+    @NSManaged public var type: String
     @NSManaged public var card: Card
 
 }

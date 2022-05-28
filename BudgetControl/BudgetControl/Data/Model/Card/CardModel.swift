@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 struct CardModel: Identifiable {
     // MARK: - Properties
@@ -37,7 +38,50 @@ struct CardModel: Identifiable {
         card.creationDate
     }
     
-    var transactionList: [Transaction] {
-        card.transactionList
+    var transactionList: [TransactionModel] {
+        card.transactionList.map(TransactionModel.init)
+    }
+    
+    var income: String {
+        var total: Double = 0
+        card.transactionList.forEach { transaction in
+            if let type = TransactionType(rawValue: transaction.type),
+               let currentAmount = Double(transaction.amount),
+               type == .income {
+                total += currentAmount
+            }
+        }
+        
+        return total.string
+    }
+    
+    var expense: String {
+        var total: Double = 0
+        card.transactionList.forEach { transaction in
+            if let type = TransactionType(rawValue: transaction.type),
+               let currentAmount = Double(transaction.amount),
+               type == .expense {
+                total += currentAmount
+            }
+        }
+        
+        return total.string
+    }
+    
+    var balance: String {
+        var total: Double = 0
+        card.transactionList.forEach { transaction in
+            if let type = TransactionType(rawValue: transaction.type),
+               let currentAmount = Double(transaction.amount) {
+                
+                if type == .income {
+                    total += currentAmount
+                } else {
+                    total -= currentAmount
+                }
+            }
+        }
+        
+        return total.string
     }
 }

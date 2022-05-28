@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TransactionCellView: View {
     // MARK: - Properties
-    var transaction: Transaction
+    var transaction: TransactionModel
     
     // MARK: - Layout
     var body: some View {
@@ -32,13 +32,12 @@ struct TransactionCellView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(alignment: .trailing, spacing: 7) {
-                // TODO: Implement income and expense
-//                let price = transaction.type == .expense ? "-R$ 99,00" : "R$ 99,00"
-                let price = "R$ 99,00"
+                let amount = transaction.amount.currencyFormatting()
+                let price = (transaction.type == .expense) ? String(format: "-%@", amount) : String(format: "+%@", amount)
                 Text(price)
                     .font(.callout)
                     .opacity(0.7)
-//                    .foregroundColor(transaction.type == .expense ? .red : .green)
+                    .foregroundColor(transaction.type == .expense ? .red : .green)
                 Text(transaction.date.formatted(date: .numeric, time: .omitted))
                     .font(.caption)
                     .opacity(0.5)

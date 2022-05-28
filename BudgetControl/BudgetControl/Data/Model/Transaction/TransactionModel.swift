@@ -8,6 +8,12 @@
 import Foundation
 import CoreData
 
+public enum TransactionType: String {
+    case income
+    case expense
+    case all
+}
+
 struct TransactionModel: Identifiable {
     // MARK: - Properties
     private var transaction: Transaction
@@ -38,5 +44,9 @@ struct TransactionModel: Identifiable {
     
     var card: Card {
         transaction.card
+    }
+    
+    var type: TransactionType {
+        TransactionType(rawValue: transaction.type) ?? .income
     }
 }

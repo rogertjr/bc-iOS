@@ -23,11 +23,12 @@
 		375911C0283EA6AF003B6DAC /* PersistenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911BF283EA6AF003B6DAC /* PersistenceProvider.swift */; };
 		375911D72842962B003B6DAC /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911D52842962A003B6DAC /* Card+CoreDataClass.swift */; };
 		375911D82842962B003B6DAC /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911D62842962B003B6DAC /* Card+CoreDataProperties.swift */; };
-		375911DB284296C2003B6DAC /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911D9284296C2003B6DAC /* Transaction+CoreDataClass.swift */; };
-		375911DC284296C2003B6DAC /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911DA284296C2003B6DAC /* Transaction+CoreDataProperties.swift */; };
 		375911DF2842A21D003B6DAC /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911DE2842A21D003B6DAC /* BaseModel.swift */; };
 		375911E22842A482003B6DAC /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911E12842A481003B6DAC /* CardModel.swift */; };
 		375911E42842A52B003B6DAC /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911E32842A52B003B6DAC /* TransactionModel.swift */; };
+		375911EB2842B6E4003B6DAC /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911E92842B6E4003B6DAC /* Transaction+CoreDataClass.swift */; };
+		375911EC2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911EA2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift */; };
+		37A791E22842BFB900E234C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A791E12842BFB900E234C7 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,11 +49,12 @@
 		375911BF283EA6AF003B6DAC /* PersistenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceProvider.swift; sourceTree = "<group>"; };
 		375911D52842962A003B6DAC /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
 		375911D62842962B003B6DAC /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		375911D9284296C2003B6DAC /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
-		375911DA284296C2003B6DAC /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		375911DE2842A21D003B6DAC /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		375911E12842A481003B6DAC /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		375911E32842A52B003B6DAC /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
+		375911E92842B6E4003B6DAC /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		375911EA2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		37A791E12842BFB900E234C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		3759119E283E6AF7003B6DAC /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				375911ED2842BF2E003B6DAC /* Extensions */,
 				3759119F283E6AFD003B6DAC /* Component */,
 			);
 			path = Util;
@@ -256,8 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				375911E32842A52B003B6DAC /* TransactionModel.swift */,
-				375911D9284296C2003B6DAC /* Transaction+CoreDataClass.swift */,
-				375911DA284296C2003B6DAC /* Transaction+CoreDataProperties.swift */,
+				375911E92842B6E4003B6DAC /* Transaction+CoreDataClass.swift */,
+				375911EA2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -268,6 +271,14 @@
 				375911DE2842A21D003B6DAC /* BaseModel.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		375911ED2842BF2E003B6DAC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				37A791E12842BFB900E234C7 /* String+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,12 +353,12 @@
 			files = (
 				375911C0283EA6AF003B6DAC /* PersistenceProvider.swift in Sources */,
 				375911D72842962B003B6DAC /* Card+CoreDataClass.swift in Sources */,
+				375911EC2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift in Sources */,
 				3759119A283E6A0A003B6DAC /* WalletManager.swift in Sources */,
 				375911B0283E814B003B6DAC /* NewTransactionView.swift in Sources */,
-				375911DB284296C2003B6DAC /* Transaction+CoreDataClass.swift in Sources */,
+				375911EB2842B6E4003B6DAC /* Transaction+CoreDataClass.swift in Sources */,
 				375911E22842A482003B6DAC /* CardModel.swift in Sources */,
 				375911B5283E8766003B6DAC /* DashboardViewModel.swift in Sources */,
-				375911DC284296C2003B6DAC /* Transaction+CoreDataProperties.swift in Sources */,
 				375911A2283E6B19003B6DAC /* CardCarouselView.swift in Sources */,
 				375911A4283E6B28003B6DAC /* CardCarouselCellView.swift in Sources */,
 				375911E42842A52B003B6DAC /* TransactionModel.swift in Sources */,
@@ -358,6 +369,7 @@
 				375911BD283EA660003B6DAC /* BC.xcdatamodeld in Sources */,
 				375911AA283E7198003B6DAC /* TransactionsListView.swift in Sources */,
 				375911AD283E7262003B6DAC /* TransactionCellView.swift in Sources */,
+				37A791E22842BFB900E234C7 /* String+Ext.swift in Sources */,
 				37591185283DBA3C003B6DAC /* BudgetControlApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

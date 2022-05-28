@@ -24,7 +24,7 @@ struct CardCarouselCellView: View {
                         .font(.callout)
                         .fontWeight(.semibold)
                     
-                    Text("R$ 2.389,00")
+                    Text(card.balance.currencyFormatting())
                         .font(.system(size: 35, weight: .bold))
                         .lineLimit(1)
                         .padding(.bottom,5)
@@ -43,7 +43,7 @@ struct CardCarouselCellView: View {
                             .font(.caption)
                             .opacity(0.7)
                         
-                        Text("R$ 3.098,00")
+                        Text(card.income.currencyFormatting())
                             .font(.callout)
                             .fontWeight(.semibold)
                             .lineLimit(1)
@@ -62,7 +62,7 @@ struct CardCarouselCellView: View {
                             .font(.caption)
                             .opacity(0.7)
                         
-                        Text("R$ 709,00")
+                        Text(card.expense.currencyFormatting())
                             .font(.callout)
                             .fontWeight(.semibold)
                             .lineLimit(1)

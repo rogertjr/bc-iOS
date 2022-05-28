@@ -8,11 +8,6 @@
 import Foundation
 import CoreData
 
-enum TransactionType: String {
-    case income = "Entrada"
-    case expense = "Saída"
-    case all = "Todos"
-}
 
 @MainActor
 final class DashboardViewModel: NSObject, ObservableObject {
@@ -45,7 +40,6 @@ final class DashboardViewModel: NSObject, ObservableObject {
             print("Error while fetching cards - \(error.localizedDescription)")
         }
     }
-    
 }
 
 // MARK: - NSFetchedResultsControllerDelegate

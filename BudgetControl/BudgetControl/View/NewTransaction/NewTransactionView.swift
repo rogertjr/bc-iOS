@@ -15,6 +15,12 @@ struct NewTransactionView: View {
     // MARK:  - Properties
     @ObservedObject private var viewModel: NewTransactionViewModel
     
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+    
     // MARK: - Init
     init(_ viewModel: NewTransactionViewModel) {
         self.viewModel = viewModel
@@ -28,12 +34,13 @@ struct NewTransactionView: View {
             .opacity(0.5)
     }
     
+    // TODO: - Add currency field handler
     var valueFieldView: some View {
         TextField("0", text: $viewModel.amount)
             .font(.system(size: 35))
             .foregroundColor(.gray)
             .multilineTextAlignment(.center)
-            .keyboardType(.numberPad)
+            .keyboardType(.decimalPad)
             .background {
                 Text(viewModel.amount == "" ? "0" : viewModel.amount)
                     .font(.system(size: 35))
@@ -152,7 +159,7 @@ struct NewTransactionView: View {
                 headerLabelView
                 valueFieldView
                 descriptionFieldView
-//                transactionTypeView
+                transactionTypeView
                 dateFieldView
             }
             
@@ -182,15 +189,15 @@ struct NewTransactionView: View {
                         .opacity(0.5)
                         .frame(width: 20, height: 20)
                     
-//                    if viewModel.type == type {
-//                        Image(systemName: "checkmark")
-//                            .font(.caption.bold())
-//                            .foregroundColor(.green)
-//                    }
+                    if viewModel.type == type {
+                        Image(systemName: "checkmark")
+                            .font(.caption.bold())
+                            .foregroundColor(.green)
+                    }
                 }
                 .contentShape(Rectangle())
                 .onTapGesture {
-//                    viewModel.type = type
+                    viewModel.type = type
                 }
                 
                 Text(type.rawValue.capitalized)
@@ -208,7 +215,7 @@ struct NewTransactionView: View {
 // MARK: - PreviewProvider
 struct NewTransactionView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTransactionView(.init(PersistenceProvider.default.context, selectedCard: nil))
+        NewTransactionView(.init(PersistenceProvider.default.context,
+                                 selectedCard: nil))
     }
 }
-
