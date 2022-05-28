@@ -8,10 +8,18 @@
 import SwiftUI
 
 struct DashboardView: View {
-    // MARK: - Properties
-    @StateObject private var viewModel = DashboardViewModel()
+    // MARK: - Env
     @Namespace var animation
+    @Environment(\.managedObjectContext) var viewContext
     
+    // MARK: - Properties
+    @ObservedObject private var viewModel: DashboardViewModel
+    
+    // MARK: - Init
+    init(_ viewModel: DashboardViewModel) {
+        self.viewModel = viewModel
+    }
+        
     // MARK: - Subviews
     var welcomeHeaderView: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -66,11 +74,12 @@ struct DashboardView: View {
                     profileButtonHeaderView
                     settingsButtonHeaderView
                 }
-                CardCarouselView()
-                customSegmentedControl()
-                    .padding(.top)
+                CardCarouselView(cards: viewModel.cards)
+//                customSegmentedControl()
+//                    .padding(.top)
                 
-                TransactionsListView(shouldFilter: true,
+                TransactionsListView(cards: viewModel.cards,
+                                     shouldFilter: false,
                                      filterSelected: viewModel.filterTabSelected)
                     .padding(.top)
             }
@@ -78,7 +87,8 @@ struct DashboardView: View {
         }
         .fullScreenCover(isPresented: $viewModel.goToNewTransaction) {
         } content: {
-            NewTransactionView()
+            NewTransactionView(.init(viewContext,
+                                     selectedCard: viewModel.selectedCard))
         }
         .overlay(alignment: .bottomTrailing) {
             addButton()
@@ -140,6 +150,6 @@ struct DashboardView: View {
 // MARK: - PreviewProvider
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView()
+        DashboardView(.init(PersistenceProvider.default.context))
     }
 }

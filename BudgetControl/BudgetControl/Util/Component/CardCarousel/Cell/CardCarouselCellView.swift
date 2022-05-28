@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardCarouselCellView: View {
     // MARK: - Properties
-    let card: Card
+    let card: CardModel
     var isFilter: Bool = false
 
     // MARK: - Layout

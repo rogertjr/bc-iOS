@@ -9,11 +9,16 @@ import SwiftUI
 import Foundation
 
 struct NewTransactionView: View {
-    // MARK:  - Properties
-    @StateObject private var viewModel = NewTransactionViewModel()
+    // MARK: - Env
+    @Environment(\.dismiss) private var dismiss
     
-    // MARK: - Environment Values
-    @Environment(\.self) var env
+    // MARK:  - Properties
+    @ObservedObject private var viewModel: NewTransactionViewModel
+    
+    // MARK: - Init
+    init(_ viewModel: NewTransactionViewModel) {
+        self.viewModel = viewModel
+    }
     
     // MARK: - SubViews
     var headerLabelView: some View {
@@ -108,7 +113,9 @@ struct NewTransactionView: View {
     
     var saveButtonView: some View {
         Button(action: {
-            // TODO: - Create persistence feature
+            if viewModel.saveNewTransaction() {
+                dismiss()
+            }
         }) {
             Text("Salvar")
                 .font(.title3)
@@ -128,7 +135,7 @@ struct NewTransactionView: View {
     
     var closeButtonView: some View {
         Button {
-            env.dismiss()
+            dismiss()
         } label: {
             Image(systemName: "xmark")
                 .font(.title2)
@@ -145,7 +152,7 @@ struct NewTransactionView: View {
                 headerLabelView
                 valueFieldView
                 descriptionFieldView
-                transactionTypeView
+//                transactionTypeView
                 dateFieldView
             }
             
@@ -175,15 +182,15 @@ struct NewTransactionView: View {
                         .opacity(0.5)
                         .frame(width: 20, height: 20)
                     
-                    if viewModel.type == type {
-                        Image(systemName: "checkmark")
-                            .font(.caption.bold())
-                            .foregroundColor(.green)
-                    }
+//                    if viewModel.type == type {
+//                        Image(systemName: "checkmark")
+//                            .font(.caption.bold())
+//                            .foregroundColor(.green)
+//                    }
                 }
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    viewModel.type = type
+//                    viewModel.type = type
                 }
                 
                 Text(type.rawValue.capitalized)
@@ -201,7 +208,7 @@ struct NewTransactionView: View {
 // MARK: - PreviewProvider
 struct NewTransactionView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTransactionView()
+        NewTransactionView(.init(PersistenceProvider.default.context, selectedCard: nil))
     }
 }
 

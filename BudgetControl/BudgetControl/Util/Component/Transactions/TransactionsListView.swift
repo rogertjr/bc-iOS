@@ -9,9 +9,9 @@ import SwiftUI
 
 struct TransactionsListView: View {
     // MARK: - Properties
-    @EnvironmentObject var wallet: WalletManager
+    var cards: [CardModel]
     var shouldFilter: Bool = false
-    var filterSelected: TransactionType
+    var filterSelected: TransactionType = .income
     
     // MARK: - Subviews
     var headerLabel: some View {
@@ -26,12 +26,14 @@ struct TransactionsListView: View {
         VStack(spacing: 16) {
             headerLabel
             if shouldFilter {
-                ForEach(wallet.selectedCard.transations.filter { return $0.type == filterSelected }) { transaction in
-                    TransactionCellView(transation: transaction)
-                }
+//                ForEach(selectedCard.transactions.filter { return $0.type == filterSelected }) { transaction in
+//                    TransactionCellView(transaction: transaction)
+//                }
+                EmptyView()
             } else {
-                ForEach(wallet.cards[0].transations) { transaction in
-                    TransactionCellView(transation: transaction)
+                // TODO: FILTER by isSelected
+                ForEach(cards[0].transactionList) { transaction in
+                    TransactionCellView(transaction: transaction)
                 }
             }
         }
