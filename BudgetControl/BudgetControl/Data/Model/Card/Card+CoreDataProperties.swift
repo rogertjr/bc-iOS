@@ -46,17 +46,19 @@ extension Card {
 }
 
 extension Card : Identifiable {
+    typealias Handler = (Result<Card, Error>) -> Void
+    
     static var allCardsRequest: NSFetchRequest<Card> {
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Card.creationDate, ascending: false)]
         return request
     }
     
-    @discardableResult
-    func createCard(
+    static func createCard(
         with cardModel: Card,
-        in context: NSManagedObjectContext
-    ) -> Card {
+        in context: NSManagedObjectContext,
+        completion: @escaping Handler
+    ) {
         let card = Card(context: context)
         card.id = UUID()
         card.creationDate = Date()
@@ -64,27 +66,43 @@ extension Card : Identifiable {
         card.color = cardModel.color
         card.isSelected = true
         card.transactions = []
-
-        try? context.save()
-        return card
+        
+        do {
+            try context.save()
+            completion(.success(card))
+        } catch {
+            completion(.failure(error))
+        }
     }
 
     func delete(
         _ cards: [Card],
-        in context: NSManagedObjectContext
+        in context: NSManagedObjectContext,
+        completion: @escaping (Result<[Card], Error>) -> Void
     ) {
         for card in cards {
             context.delete(card)
         }
-
-        try? context.save()
+        
+        do {
+            try context.save()
+            completion(.success(cards))
+        } catch {
+            completion(.failure(error))
+        }
     }
 
     func setSelected(
         _ card: Card,
-        in context: NSManagedObjectContext
+        in context: NSManagedObjectContext,
+        completion: @escaping Handler
     ) {
         card.isSelected.toggle()
-        try? context.save()
+        do {
+            try context.save()
+            completion(.success(card))
+        } catch {
+            completion(.failure(error))
+        }
     }
 }

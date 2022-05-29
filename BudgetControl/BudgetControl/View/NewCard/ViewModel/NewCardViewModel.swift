@@ -15,9 +15,11 @@ final class NewCardViewModel: ObservableObject {
     
     @Published var cardTitle: String = ""
     @Published var cardColor: String = "Black"
-    @Published var isAbleToContinue: Bool = true
+    var isAbleToContinue: Bool {
+        !cardTitle.isEmpty && !cardColor.isEmpty
+    }
     
-    let cardColors: [String] = ["Yellow","Green","Blue","Purple","Red","Orange", "Black"]
+    let cardColors: [String] = ["Yellow", "Green", "Blue", "Purple", "Red", "Orange", "Black"]
      
     // MARK: - Helpers
     init(_ context: NSManagedObjectContext) {
@@ -25,7 +27,7 @@ final class NewCardViewModel: ObservableObject {
     }
     
     // MARK: - Persitence
-    func saveNewCard() -> Bool {
+    func saveNewCard() {
         let card = Card(context: context)
         card.id = UUID()
         card.creationDate = Date()
@@ -33,12 +35,14 @@ final class NewCardViewModel: ObservableObject {
         card.title = cardTitle
         card.color = cardColor
         
-        do {
-            try context.save()
-            return true
-        } catch {
-            print("Error while saving card - \(error.localizedDescription)")
+        Card.createCard(with: card,
+                        in: context) { result in
+            switch result {
+            case .success:
+                print("✅ - Card successfully saved")
+            case .failure(let error):
+                print("⚠️ - \(error.localizedDescription)")
+            }
         }
-        return false
     }
 }

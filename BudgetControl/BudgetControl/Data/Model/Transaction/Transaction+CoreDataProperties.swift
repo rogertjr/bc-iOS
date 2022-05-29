@@ -33,31 +33,36 @@ extension Transaction : Identifiable {
         return request
     }
 
-    @discardableResult
-    func createTransaction(
+    static func createTransaction(
         with transactionModel: Transaction,
         card: Card,
-        in context: NSManagedObjectContext
-    ) -> Transaction {
-        let transaction = Transaction(context: context)
-        transaction.id = UUID()
-        transaction.title = transactionModel.title
-        transaction.color = "red"
-        transaction.amount = "99,00"
-        transaction.date = Date()
-        card.addToTransactions(transaction)
+        in context: NSManagedObjectContext,
+        completion: @escaping (Result<Card, Error>) -> Void
+    ) {
+        
+        card.addToTransactions(transactionModel)
 
-        try? context.save()
-        return transaction
+        do {
+            try context.save()
+            completion(.success(card))
+        } catch {
+            completion(.failure(error))
+        }
     }
 
     func delete(
         _ transactions: [Transaction],
-        in context: NSManagedObjectContext
+        in context: NSManagedObjectContext,
+        completion: (Result<[Transaction], Error>) -> Void
     ) {
         for transaction in transactions {
             context.delete(transaction)
         }
-        try? context.save()
+        do {
+            try context.save()
+            completion(.success(transactions))
+        } catch {
+            completion(.failure(error))
+        }
     }
 }

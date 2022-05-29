@@ -33,6 +33,7 @@
 		37973B1E2843432100158E5D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B1D2843432100158E5D /* Date+Ext.swift */; };
 		37973B222843475B00158E5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37973B242843475B00158E5D /* Localizable.strings */; };
 		37973B2628434AEF00158E5D /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B2528434AEF00158E5D /* Color+Ext.swift */; };
+		37973B292843943700158E5D /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B282843943700158E5D /* CurrencyTextField.swift */; };
 		37A791E22842BFB900E234C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A791E12842BFB900E234C7 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		37973B1D2843432100158E5D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		37973B232843475B00158E5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		37973B2528434AEF00158E5D /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		37973B282843943700158E5D /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
 		37A791E12842BFB900E234C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +167,7 @@
 		3759119E283E6AF7003B6DAC /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				37973B272843942C00158E5D /* Custom */,
 				37973B1F2843472D00158E5D /* Localizable */,
 				375911ED2842BF2E003B6DAC /* Extensions */,
 				3759119F283E6AFD003B6DAC /* Components */,
@@ -320,6 +323,14 @@
 			path = Localizable;
 			sourceTree = "<group>";
 		};
+		37973B272843942C00158E5D /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				37973B282843943700158E5D /* CurrencyTextField.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -404,6 +415,7 @@
 				375911A2283E6B19003B6DAC /* CardCarouselView.swift in Sources */,
 				375911A4283E6B28003B6DAC /* CardCarouselCellView.swift in Sources */,
 				375911E42842A52B003B6DAC /* TransactionModel.swift in Sources */,
+				37973B292843943700158E5D /* CurrencyTextField.swift in Sources */,
 				375911B3283E823B003B6DAC /* NewTransactionViewModel.swift in Sources */,
 				375911D82842962B003B6DAC /* Card+CoreDataProperties.swift in Sources */,
 				37973B1528433D6200158E5D /* NewCardView.swift in Sources */,

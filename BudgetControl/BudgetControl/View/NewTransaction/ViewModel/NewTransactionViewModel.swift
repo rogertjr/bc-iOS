@@ -15,12 +15,14 @@ final class NewTransactionViewModel: ObservableObject {
     
     private var selectedCard: Card?
     
-    @Published var amount: String = ""
+    @Published var amount: Double?
     @Published var type: TransactionType = .all
     @Published var date: Date = Date()
     @Published var transactionTitle: String = ""
     
-    @Published var isAbleToContinue: Bool = true
+    var isAbleToContinue: Bool {
+        !transactionTitle.isEmpty && type != .all && amount != nil
+    }
     
     // MARK: - Helpers
     init(
@@ -39,28 +41,25 @@ final class NewTransactionViewModel: ObservableObject {
     }
     
     // MARK: - Data Persistence
-    #warning("CREATE MODEL EXTENSION FOR PERSISTENCE")
-    func saveNewTransaction() -> Bool {
-        guard let selectedCard = selectedCard else { return false }
+    func saveNewTransaction() {
+        guard let selectedCard = selectedCard else { return }
         
         let transaction = Transaction(context: context)
         transaction.id = UUID()
         transaction.title = transactionTitle
-        transaction.color = "red"
-        transaction.amount = amount
+        transaction.amount = amount?.string ?? "0"
         transaction.type = type.rawValue
-        #warning("theres a bug when changing date on datepicker")
         transaction.date = date
-                
-        selectedCard.addToTransactions(transaction)
         
-        do {
-            try context.save()
-        } catch {
-            print("Error - \(error.localizedDescription)")
-            return false
+        Transaction.createTransaction(with: transaction,
+                                      card: selectedCard,
+                                      in: context) { result in
+            switch result {
+            case .success:
+                print("✅ - Transaction successfully saved")
+            case .failure(let error):
+                print("⚠️ - \(error.localizedDescription)")
+            }
         }
-        
-        return true
     }
 }

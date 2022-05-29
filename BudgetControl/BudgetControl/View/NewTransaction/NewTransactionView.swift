@@ -14,12 +14,7 @@ struct NewTransactionView: View {
     
     // MARK:  - Properties
     @ObservedObject private var viewModel: NewTransactionViewModel
-    
-    let formatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        return formatter
-    }()
+    @State private var focus = false
     
     // MARK: - Init
     init(_ viewModel: NewTransactionViewModel) {
@@ -31,26 +26,16 @@ struct NewTransactionView: View {
         Text("new_transaction_title".localized)
             .font(.title2)
             .fontWeight(.semibold)
-            .opacity(0.5)
     }
     
-    // TODO: - Add currency field handler
-    var valueFieldView: some View {
-        TextField("0", text: $viewModel.amount)
+    var currencyFieldView: some View {
+        CurrencyTextField("0".currencyFormatting(),
+                          value: $viewModel.amount,
+                          isResponder: $focus,
+                          alwaysShowFractions: true)
             .font(.system(size: 35))
-            .foregroundColor(.gray)
             .multilineTextAlignment(.center)
             .keyboardType(.decimalPad)
-            .background {
-                Text(viewModel.amount == "" ? "0" : viewModel.amount)
-                    .font(.system(size: 35))
-                    .opacity(0)
-                    .overlay(alignment: .leading) {
-                        Text(viewModel.currencySymbol())
-                            .opacity(0.5)
-                            .offset(x: -25, y: 5)
-                    }
-            }
             .padding(.vertical, 10)
             .frame(maxWidth: .infinity)
             .background {
@@ -59,6 +44,9 @@ struct NewTransactionView: View {
             }
             .padding(.horizontal, 20)
             .padding(.top)
+            .onAppear {
+                self.focus = true
+            }
     }
 
     var titleFieldView: some View {
@@ -67,13 +55,12 @@ struct NewTransactionView: View {
                       text: $viewModel.transactionTitle)
                 .padding(.leading ,10)
         } icon: {
-            Image(systemName: "list.bullet.rectangle.portrait.fill")
+            Image(systemName: "doc.text.fill")
                 .font(.title3)
-                .foregroundColor(.gray)
         }
         .padding(.vertical, 20)
         .padding(.horizontal, 15)
-        .background{
+        .background {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(.white)
         }
@@ -82,16 +69,14 @@ struct NewTransactionView: View {
     
     var transactionTypeView: some View {
         Label {
-            // MARK: CheckBoxes
             CustomCheckboxes()
         } icon: {
             Image(systemName: "arrow.up.arrow.down")
                 .font(.title3)
-                .foregroundColor(.gray)
         }
         .padding(.vertical, 20)
         .padding(.horizontal, 15)
-        .background{
+        .background {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(.white)
         }
@@ -108,11 +93,10 @@ struct NewTransactionView: View {
         } icon: {
             Image(systemName: "calendar")
                 .font(.title3)
-                .foregroundColor(.gray)
         }
         .padding(.vertical, 20)
         .padding(.horizontal, 15)
-        .background{
+        .background {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(.white)
         }
@@ -121,18 +105,17 @@ struct NewTransactionView: View {
     
     var saveButtonView: some View {
         Button(action: {
-            if viewModel.saveNewTransaction() {
-                dismiss()
-            }
+            viewModel.saveNewTransaction()
+            dismiss()
         }) {
             Text("save".localized)
                 .font(.title3)
                 .fontWeight(.semibold)
                 .padding(.vertical, 15)
                 .frame(maxWidth: .infinity)
-                .background{
+                .background {
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(.gray)
+                        .fill(Color.bcPurple)
                 }
                 .foregroundColor(.white)
                 .padding(.bottom, 10)
@@ -147,7 +130,7 @@ struct NewTransactionView: View {
         } label: {
             Image(systemName: "xmark")
                 .font(.title2)
-                .foregroundColor(.black)
+                .foregroundColor(.bcPurple)
                 .opacity(0.7)
         }
         .padding()
@@ -158,7 +141,7 @@ struct NewTransactionView: View {
         VStack {
             VStack(spacing: 16) {
                 headerLabelView
-                valueFieldView
+                currencyFieldView
                 titleFieldView
                 transactionTypeView
                 dateFieldView
@@ -169,7 +152,7 @@ struct NewTransactionView: View {
             saveButtonView
         }
         .padding()
-        .background{
+        .background {
             Color.gray.opacity(0.06)
                 .ignoresSafeArea()
         }
@@ -187,7 +170,6 @@ struct NewTransactionView: View {
                 ZStack{
                     RoundedRectangle(cornerRadius: 2)
                         .stroke(.black, lineWidth: 2)
-                        .opacity(0.5)
                         .frame(width: 20, height: 20)
                     
                     if viewModel.type == type {
@@ -204,7 +186,6 @@ struct NewTransactionView: View {
                 Text(type.rawValue.capitalized)
                     .font(.callout)
                     .fontWeight(.semibold)
-                    .opacity(0.7)
                     .padding(.trailing, 10)
             }
         }

@@ -24,7 +24,6 @@ struct NewCardView: View {
         Text("new_card_title".localized)
             .font(.title2)
             .fontWeight(.semibold)
-            .opacity(0.5)
     }
     
     var titleFieldView: some View {
@@ -33,9 +32,8 @@ struct NewCardView: View {
                       text: $viewModel.cardTitle)
                 .padding(.leading, 10)
         } icon: {
-            Image(systemName: "list.bullet.rectangle.portrait.fill")
+            Image(systemName: "doc.text.fill")
                 .font(.title3)
-                .foregroundColor(.gray)
         }
         .padding(.vertical, 20)
         .padding(.horizontal, 15)
@@ -49,7 +47,6 @@ struct NewCardView: View {
     var colorSectionView: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("select_card_color".localized)
-                .foregroundColor(.gray)
                 .font(.caption)
                 .fontWeight(.semibold)
 
@@ -76,13 +73,17 @@ struct NewCardView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.top, 10)
         .padding(.horizontal, 15)
+        .padding(.bottom, 15)
+        .background{
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(.white)
+        }
     }
     
     var saveButtonView: some View {
         Button(action: {
-            if viewModel.saveNewCard() {
-                dismiss()
-            }
+            viewModel.saveNewCard()
+            dismiss()
         }) {
             Text("save".localized)
                 .font(.title3)
@@ -91,7 +92,7 @@ struct NewCardView: View {
                 .frame(maxWidth: .infinity)
                 .background{
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(.gray)
+                        .fill(Color.bcPurple)
                 }
                 .foregroundColor(.white)
                 .padding(.bottom, 10)
@@ -106,8 +107,7 @@ struct NewCardView: View {
         } label: {
             Image(systemName: "xmark")
                 .font(.title2)
-                .foregroundColor(.black)
-                .opacity(0.7)
+                .foregroundColor(.bcPurple)
         }
         .padding()
     }
@@ -125,13 +125,20 @@ struct NewCardView: View {
             saveButtonView
         }
         .padding()
-        .background{
-            Color.gray.opacity(0.06)
+        .background {
+            Color.bcPurple.opacity(0.06)
                 .ignoresSafeArea()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .overlay(alignment: .topTrailing) {
             closeButtonView
         }
+    }
+}
+
+// MARK: - PreviewProvider
+struct NewCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewCardView(.init(PersistenceProvider.default.context))
     }
 }
