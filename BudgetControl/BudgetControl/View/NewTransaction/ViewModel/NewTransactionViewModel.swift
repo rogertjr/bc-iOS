@@ -18,7 +18,7 @@ final class NewTransactionViewModel: ObservableObject {
     @Published var amount: String = ""
     @Published var type: TransactionType = .all
     @Published var date: Date = Date()
-    @Published var description: String = ""
+    @Published var transactionTitle: String = ""
     
     @Published var isAbleToContinue: Bool = true
     
@@ -42,18 +42,10 @@ final class NewTransactionViewModel: ObservableObject {
     #warning("CREATE MODEL EXTENSION FOR PERSISTENCE")
     func saveNewTransaction() -> Bool {
         guard let selectedCard = selectedCard else { return false }
-
-        // MARK: - Temporary ========
-//        let card = Card(context: context)
-//        card.id = UUID()
-//        card.creationDate = Date()
-//        card.isSelected = true
-//        card.title = "Nubank"
-        // MARK: - Temporary ========
         
         let transaction = Transaction(context: context)
         transaction.id = UUID()
-        transaction.title = description
+        transaction.title = transactionTitle
         transaction.color = "red"
         transaction.amount = amount
         transaction.type = type.rawValue

@@ -101,6 +101,10 @@ struct DashboardView: View {
             NewTransactionView(.init(viewContext,
                                      selectedCard: viewModel.selectedCard))
         }
+        .fullScreenCover(isPresented: $viewModel.goToNewCard) {
+        } content: {
+            NewCardView(.init(viewContext))
+        }
         .overlay(alignment: .bottomTrailing) {
             addButton()
         }
@@ -110,8 +114,9 @@ struct DashboardView: View {
     @ViewBuilder
     func addButton() -> some View{
         Button {
-            // TODO: - Create implementation
-            viewModel.goToNewTransaction.toggle()
+            viewModel.cards.count > 0
+                ? viewModel.goToNewTransaction.toggle()
+                : viewModel.goToNewCard.toggle()
         } label: {
             Image(systemName: "plus")
                 .font(.system(size: 25, weight: .medium))

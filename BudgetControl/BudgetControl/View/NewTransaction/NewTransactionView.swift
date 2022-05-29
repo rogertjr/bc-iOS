@@ -61,9 +61,9 @@ struct NewTransactionView: View {
             .padding(.top)
     }
 
-    var descriptionFieldView: some View {
+    var titleFieldView: some View {
         Label {
-            TextField("Descrição",text: $viewModel.description)
+            TextField("Descrição",text: $viewModel.transactionTitle)
                 .padding(.leading ,10)
         } icon: {
             Image(systemName: "list.bullet.rectangle.portrait.fill")
@@ -158,7 +158,7 @@ struct NewTransactionView: View {
             VStack(spacing: 16) {
                 headerLabelView
                 valueFieldView
-                descriptionFieldView
+                titleFieldView
                 transactionTypeView
                 dateFieldView
             }

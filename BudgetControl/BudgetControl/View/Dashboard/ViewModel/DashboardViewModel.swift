@@ -17,6 +17,7 @@ final class DashboardViewModel: NSObject, ObservableObject {
     @Published var cards = [CardModel]()
     private (set) var selectedCard: Card?
     @Published var goToNewTransaction: Bool = false
+    @Published var goToNewCard: Bool = false
     @Published var filterTabSelected: TransactionType = .income
     
     private let fetchedResultsController: NSFetchedResultsController<Card>

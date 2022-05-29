@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CardCarouselView: View {
     // MARK: - Properties
-    @EnvironmentObject var wallet: WalletManager
     var cards: [CardModel]
     
     // MARK: - Subviews
@@ -17,14 +16,7 @@ struct CardCarouselView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
                 ForEach(cards.indices, id: \.self) { index in
-                    CardCarouselCellView(card: cards[index])
-                    // TODO: - Select card on apresentation
-//                        .onTapGesture {
-//                            cards.indices.forEach { index in
-//                                cards[index].isSelected = false
-//                            }
-//                            cards[index].isSelected.toggle()
-//                        }
+                    CardCarouselCellView(.init(cards[index]))
                 }
             }
         }

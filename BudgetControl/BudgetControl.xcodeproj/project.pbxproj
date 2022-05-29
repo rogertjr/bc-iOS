@@ -11,7 +11,6 @@
 		37591189283DBA3E003B6DAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37591188283DBA3E003B6DAC /* Assets.xcassets */; };
 		3759118C283DBA3E003B6DAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3759118B283DBA3E003B6DAC /* Preview Assets.xcassets */; };
 		37591196283DBB12003B6DAC /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37591195283DBB12003B6DAC /* DashboardView.swift */; };
-		3759119A283E6A0A003B6DAC /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37591199283E6A0A003B6DAC /* WalletManager.swift */; };
 		375911A2283E6B19003B6DAC /* CardCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911A1283E6B19003B6DAC /* CardCarouselView.swift */; };
 		375911A4283E6B28003B6DAC /* CardCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911A3283E6B28003B6DAC /* CardCarouselCellView.swift */; };
 		375911AA283E7198003B6DAC /* TransactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911A9283E7198003B6DAC /* TransactionsListView.swift */; };
@@ -28,6 +27,10 @@
 		375911E42842A52B003B6DAC /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911E32842A52B003B6DAC /* TransactionModel.swift */; };
 		375911EB2842B6E4003B6DAC /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911E92842B6E4003B6DAC /* Transaction+CoreDataClass.swift */; };
 		375911EC2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911EA2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift */; };
+		37973B1528433D6200158E5D /* NewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B1428433D6200158E5D /* NewCardView.swift */; };
+		37973B1728433D8600158E5D /* NewCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B1628433D8600158E5D /* NewCardViewModel.swift */; };
+		37973B1B2843427300158E5D /* CardCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B1A2843427300158E5D /* CardCarouselViewModel.swift */; };
+		37973B1E2843432100158E5D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B1D2843432100158E5D /* Date+Ext.swift */; };
 		37A791E22842BFB900E234C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A791E12842BFB900E234C7 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +40,6 @@
 		37591188283DBA3E003B6DAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3759118B283DBA3E003B6DAC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		37591195283DBB12003B6DAC /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		37591199283E6A0A003B6DAC /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		375911A1283E6B19003B6DAC /* CardCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCarouselView.swift; sourceTree = "<group>"; };
 		375911A3283E6B28003B6DAC /* CardCarouselCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCarouselCellView.swift; sourceTree = "<group>"; };
 		375911A9283E7198003B6DAC /* TransactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,10 @@
 		375911E32842A52B003B6DAC /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		375911E92842B6E4003B6DAC /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
 		375911EA2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		37973B1428433D6200158E5D /* NewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardView.swift; sourceTree = "<group>"; };
+		37973B1628433D8600158E5D /* NewCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardViewModel.swift; sourceTree = "<group>"; };
+		37973B1A2843427300158E5D /* CardCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCarouselViewModel.swift; sourceTree = "<group>"; };
+		37973B1D2843432100158E5D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		37A791E12842BFB900E234C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +123,7 @@
 		37591193283DBAEC003B6DAC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				37973B1328433D5700158E5D /* NewCard */,
 				375911AE283E813A003B6DAC /* NewTransaction */,
 				37591194283DBAF4003B6DAC /* Dashboard */,
 			);
@@ -137,17 +144,8 @@
 			children = (
 				375911BE283EA69E003B6DAC /* Persistence */,
 				3759119B283E6A1F003B6DAC /* Model */,
-				37591198283E6A00003B6DAC /* Manager */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		37591198283E6A00003B6DAC /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				37591199283E6A0A003B6DAC /* WalletManager.swift */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		3759119B283E6A1F003B6DAC /* Model */ = {
@@ -181,6 +179,7 @@
 		375911A0283E6B08003B6DAC /* CardCarousel */ = {
 			isa = PBXGroup;
 			children = (
+				37973B192843426600158E5D /* ViewModel */,
 				375911A5283E6B2C003B6DAC /* Cell */,
 				375911A1283E6B19003B6DAC /* CardCarouselView.swift */,
 			);
@@ -277,8 +276,34 @@
 			isa = PBXGroup;
 			children = (
 				37A791E12842BFB900E234C7 /* String+Ext.swift */,
+				37973B1D2843432100158E5D /* Date+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		37973B1328433D5700158E5D /* NewCard */ = {
+			isa = PBXGroup;
+			children = (
+				37973B1828433D8C00158E5D /* ViewModel */,
+				37973B1428433D6200158E5D /* NewCardView.swift */,
+			);
+			path = NewCard;
+			sourceTree = "<group>";
+		};
+		37973B1828433D8C00158E5D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				37973B1628433D8600158E5D /* NewCardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		37973B192843426600158E5D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				37973B1A2843427300158E5D /* CardCarouselViewModel.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,9 +377,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				375911C0283EA6AF003B6DAC /* PersistenceProvider.swift in Sources */,
+				37973B1B2843427300158E5D /* CardCarouselViewModel.swift in Sources */,
 				375911D72842962B003B6DAC /* Card+CoreDataClass.swift in Sources */,
+				37973B1E2843432100158E5D /* Date+Ext.swift in Sources */,
 				375911EC2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift in Sources */,
-				3759119A283E6A0A003B6DAC /* WalletManager.swift in Sources */,
 				375911B0283E814B003B6DAC /* NewTransactionView.swift in Sources */,
 				375911EB2842B6E4003B6DAC /* Transaction+CoreDataClass.swift in Sources */,
 				375911E22842A482003B6DAC /* CardModel.swift in Sources */,
@@ -364,6 +390,7 @@
 				375911E42842A52B003B6DAC /* TransactionModel.swift in Sources */,
 				375911B3283E823B003B6DAC /* NewTransactionViewModel.swift in Sources */,
 				375911D82842962B003B6DAC /* Card+CoreDataProperties.swift in Sources */,
+				37973B1528433D6200158E5D /* NewCardView.swift in Sources */,
 				375911DF2842A21D003B6DAC /* BaseModel.swift in Sources */,
 				37591196283DBB12003B6DAC /* DashboardView.swift in Sources */,
 				375911BD283EA660003B6DAC /* BC.xcdatamodeld in Sources */,
@@ -371,6 +398,7 @@
 				375911AD283E7262003B6DAC /* TransactionCellView.swift in Sources */,
 				37A791E22842BFB900E234C7 /* String+Ext.swift in Sources */,
 				37591185283DBA3C003B6DAC /* BudgetControlApp.swift in Sources */,
+				37973B1728433D8600158E5D /* NewCardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

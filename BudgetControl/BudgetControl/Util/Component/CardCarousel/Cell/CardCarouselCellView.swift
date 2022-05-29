@@ -9,8 +9,12 @@ import SwiftUI
 
 struct CardCarouselCellView: View {
     // MARK: - Properties
-    let card: CardModel
-    var isFilter: Bool = false
+    var viewModel: CardCarouselViewModel
+    
+    // MARK: - Init
+    init(_ viewModel: CardCarouselViewModel) {
+        self.viewModel = viewModel
+    }
 
     // MARK: - Layout
     var body: some View {
@@ -20,11 +24,11 @@ struct CardCarouselCellView: View {
             
             VStack(spacing: 16) {
                 VStack(spacing: 16) {
-                    Text("1 de mai. de 2022 - 25 de mai. de 2022")
+                    Text(viewModel.currentMonth.currentMonthDateString())
                         .font(.callout)
                         .fontWeight(.semibold)
                     
-                    Text(card.balance.currencyFormatting())
+                    Text(viewModel.card.balance.currencyFormatting())
                         .font(.system(size: 35, weight: .bold))
                         .lineLimit(1)
                         .padding(.bottom,5)
@@ -43,7 +47,7 @@ struct CardCarouselCellView: View {
                             .font(.caption)
                             .opacity(0.7)
                         
-                        Text(card.income.currencyFormatting())
+                        Text(viewModel.card.income.currencyFormatting())
                             .font(.callout)
                             .fontWeight(.semibold)
                             .lineLimit(1)
@@ -62,7 +66,7 @@ struct CardCarouselCellView: View {
                             .font(.caption)
                             .opacity(0.7)
                         
-                        Text(card.expense.currencyFormatting())
+                        Text(viewModel.card.expense.currencyFormatting())
                             .font(.callout)
                             .fontWeight(.semibold)
                             .lineLimit(1)

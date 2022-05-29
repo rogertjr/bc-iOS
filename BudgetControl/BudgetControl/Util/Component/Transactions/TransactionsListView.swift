@@ -21,23 +21,31 @@ struct TransactionsListView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     
+    var emptyDashboardView: some View {
+        Text("Não há transações cadastradas")
+            .padding(.top)
+    }
+    
     // MARK: - Layout
     var body: some View {
         VStack(spacing: 16) {
             headerLabel
-            
             if let selectedCard = cards.filter({ $0.isSelected == true }).first {
-                if shouldFilter {
-                    ForEach(selectedCard.transactionList.filter { return $0.type == filterSelected }) { transaction in
-                        TransactionCellView(transaction: transaction)
+                if selectedCard.transactionList.count > 0 {
+                    if shouldFilter {
+                        ForEach(selectedCard.transactionList.filter { return $0.type == filterSelected }) { transaction in
+                            TransactionCellView(transaction: transaction)
+                        }
+                    } else {
+                        ForEach(selectedCard.transactionList) { transaction in
+                            TransactionCellView(transaction: transaction)
+                        }
                     }
                 } else {
-                    ForEach(selectedCard.transactionList) { transaction in
-                        TransactionCellView(transaction: transaction)
-                    }
+                    emptyDashboardView
                 }
             } else {
-                EmptyView()
+                emptyDashboardView
             }
         }
     }
