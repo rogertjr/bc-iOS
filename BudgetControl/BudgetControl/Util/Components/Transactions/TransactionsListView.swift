@@ -17,7 +17,6 @@ struct TransactionsListView: View {
     var headerLabel: some View {
         Text("transaction_list_title".localized)
             .font(.title2.bold())
-            .opacity(0.7)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     

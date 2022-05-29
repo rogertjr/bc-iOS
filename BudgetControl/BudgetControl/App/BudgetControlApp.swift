@@ -13,8 +13,9 @@ struct BudgetControlApp: App {
     
     var body: some Scene {
         WindowGroup {
-            DashboardView(.init(context))
+            TabContainerView()
                 .environment(\.managedObjectContext, context)
+                .accentColor(.primary)
         }
     }
 }

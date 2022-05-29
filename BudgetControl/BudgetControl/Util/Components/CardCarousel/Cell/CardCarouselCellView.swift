@@ -40,7 +40,8 @@ struct CardCarouselCellView: View {
                         .font(.caption.bold())
                         .foregroundColor(.green)
                         .frame(width: 30, height: 30)
-                        .background(.white.opacity(0.7),in: Circle())
+                        .background(.green.opacity(0.3),
+                                    in: Circle())
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text("income".localized)
@@ -59,7 +60,8 @@ struct CardCarouselCellView: View {
                         .font(.caption.bold())
                         .foregroundColor(.red)
                         .frame(width: 30, height: 30)
-                        .background(.white.opacity(0.7),in: Circle())
+                        .background(.red.opacity(0.3),
+                                    in: Circle())
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text("expense".localized)

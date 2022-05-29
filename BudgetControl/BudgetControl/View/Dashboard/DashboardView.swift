@@ -14,6 +14,7 @@ struct DashboardView: View {
     
     // MARK: - Properties
     @ObservedObject private var viewModel: DashboardViewModel
+    @EnvironmentObject var sharedViewModel: MainViewModel
     
     // MARK: - Init
     init(_ viewModel: DashboardViewModel) {
@@ -35,34 +36,16 @@ struct DashboardView: View {
     }
     
     var profileButtonHeaderView: some View {
-        NavigationLink {
-            // TODO: - create destination view
-            EmptyView()
-        } label: {
-            Image(systemName: "person.crop.circle.fill")
-                .foregroundColor(Color.bcPurple)
-                .frame(width: 40, height: 40)
-                .background(.white, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
-        }
-    }
-    
-    var settingsButtonHeaderView: some View {
-        NavigationLink {
-            // TODO: - create destination view
-            EmptyView()
-        } label: {
-            Image(systemName: "gearshape.fill")
-                .foregroundColor(Color.bcPurple)
-                .overlay(content: {
-                    Circle()
-                        .stroke(.white, lineWidth: 2)
-                        .padding(7)
-                })
-                .frame(width: 40, height: 40)
-                .background(.white, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
-        }
+        Image(systemName: "person.crop.circle.fill")
+            .foregroundColor(Color.bcPurple)
+            .frame(width: 40, height: 40)
+            .background(Color.bcBackground, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
+            .onTapGesture {
+                withAnimation {
+                    sharedViewModel.showProfile = true
+                }
+            }
     }
     
     var emptyDashboardView: some View {
@@ -77,7 +60,6 @@ struct DashboardView: View {
                 HStack(spacing: 16) {
                     welcomeHeaderView
                     profileButtonHeaderView
-                    settingsButtonHeaderView
                 }
                 
                 if viewModel.cards.count > 0 {
@@ -88,7 +70,14 @@ struct DashboardView: View {
                     TransactionsListView(cards: viewModel.cards,
                                          shouldFilter: true,
                                          filterSelected: viewModel.filterTabSelected)
-                        .padding(.top)
+                        .padding([.top, .leading, .trailing])
+                        .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
+                        .background(
+                            Color.gray.opacity(0.06)
+                                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                .ignoresSafeArea()
+                                .padding(.bottom)
+                        )
                 } else {
                     emptyDashboardView
                 }
@@ -140,7 +129,7 @@ struct DashboardView: View {
             ForEach([TransactionType.income, TransactionType.expense],id: \.rawValue) { tab in
                 Text(tab.rawValue.capitalized)
                     .fontWeight(.semibold)
-                    .foregroundColor(viewModel.filterTabSelected == tab ? .white : .black)
+                    .foregroundColor(viewModel.filterTabSelected == tab ? .white : .gray)
                     .opacity(viewModel.filterTabSelected == tab ? 1 : 0.7)
                     .padding(.vertical, 12)
                     .frame(maxWidth: .infinity)
@@ -160,7 +149,7 @@ struct DashboardView: View {
         .padding(5)
         .background {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .fill(.white)
+                .fill(Color.bcBackground)
         }
         .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
     }

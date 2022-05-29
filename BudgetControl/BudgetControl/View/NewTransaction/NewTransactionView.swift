@@ -131,7 +131,6 @@ struct NewTransactionView: View {
             Image(systemName: "xmark")
                 .font(.title2)
                 .foregroundColor(.bcPurple)
-                .opacity(0.7)
         }
         .padding()
     }

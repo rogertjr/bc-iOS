@@ -46,7 +46,7 @@ struct TransactionCellView: View {
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(.white)
+                .fill(Color.bcBackground)
         }
         .shadow(color: .black.opacity(0.08), radius: 5, x: 5, y: 5)
     }

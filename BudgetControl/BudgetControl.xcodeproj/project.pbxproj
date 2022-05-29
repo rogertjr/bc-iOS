@@ -34,6 +34,11 @@
 		37973B222843475B00158E5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37973B242843475B00158E5D /* Localizable.strings */; };
 		37973B2628434AEF00158E5D /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B2528434AEF00158E5D /* Color+Ext.swift */; };
 		37973B292843943700158E5D /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B282843943700158E5D /* CurrencyTextField.swift */; };
+		37973B2E2843A77700158E5D /* TabContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B2D2843A77700158E5D /* TabContainerView.swift */; };
+		37973B312843A79800158E5D /* TabContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B302843A79800158E5D /* TabContainerViewModel.swift */; };
+		37973B332843A7B700158E5D /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B322843A7B700158E5D /* TabButtonView.swift */; };
+		37973B372843A7ED00158E5D /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B362843A7ED00158E5D /* TabItem.swift */; };
+		37973B3A2843A87700158E5D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B392843A87700158E5D /* MainViewModel.swift */; };
 		37A791E22842BFB900E234C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A791E12842BFB900E234C7 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +71,11 @@
 		37973B232843475B00158E5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		37973B2528434AEF00158E5D /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		37973B282843943700158E5D /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
+		37973B2D2843A77700158E5D /* TabContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainerView.swift; sourceTree = "<group>"; };
+		37973B302843A79800158E5D /* TabContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainerViewModel.swift; sourceTree = "<group>"; };
+		37973B322843A7B700158E5D /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
+		37973B362843A7ED00158E5D /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		37973B392843A87700158E5D /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		37A791E12842BFB900E234C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +139,8 @@
 		37591193283DBAEC003B6DAC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				37973B382843A86C00158E5D /* Shared */,
+				37973B2C2843A76B00158E5D /* TabBar */,
 				37973B1328433D5700158E5D /* NewCard */,
 				375911AE283E813A003B6DAC /* NewTransaction */,
 				37591194283DBAF4003B6DAC /* Dashboard */,
@@ -157,6 +169,7 @@
 		3759119B283E6A1F003B6DAC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				37973B352843A7E500158E5D /* TabItem */,
 				375911DD2842A214003B6DAC /* Base */,
 				375911D428429363003B6DAC /* Transaction */,
 				375911D32842935A003B6DAC /* Card */,
@@ -331,6 +344,48 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		37973B2C2843A76B00158E5D /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				37973B2F2843A79000158E5D /* ViewModel */,
+				37973B342843A7C100158E5D /* Cell */,
+				37973B2D2843A77700158E5D /* TabContainerView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		37973B2F2843A79000158E5D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				37973B302843A79800158E5D /* TabContainerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		37973B342843A7C100158E5D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				37973B322843A7B700158E5D /* TabButtonView.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		37973B352843A7E500158E5D /* TabItem */ = {
+			isa = PBXGroup;
+			children = (
+				37973B362843A7ED00158E5D /* TabItem.swift */,
+			);
+			path = TabItem;
+			sourceTree = "<group>";
+		};
+		37973B382843A86C00158E5D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				37973B392843A87700158E5D /* MainViewModel.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -405,7 +460,9 @@
 				375911C0283EA6AF003B6DAC /* PersistenceProvider.swift in Sources */,
 				37973B1B2843427300158E5D /* CardCarouselViewModel.swift in Sources */,
 				375911D72842962B003B6DAC /* Card+CoreDataClass.swift in Sources */,
+				37973B312843A79800158E5D /* TabContainerViewModel.swift in Sources */,
 				37973B1E2843432100158E5D /* Date+Ext.swift in Sources */,
+				37973B3A2843A87700158E5D /* MainViewModel.swift in Sources */,
 				375911EC2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift in Sources */,
 				37973B2628434AEF00158E5D /* Color+Ext.swift in Sources */,
 				375911B0283E814B003B6DAC /* NewTransactionView.swift in Sources */,
@@ -417,13 +474,16 @@
 				375911E42842A52B003B6DAC /* TransactionModel.swift in Sources */,
 				37973B292843943700158E5D /* CurrencyTextField.swift in Sources */,
 				375911B3283E823B003B6DAC /* NewTransactionViewModel.swift in Sources */,
+				37973B332843A7B700158E5D /* TabButtonView.swift in Sources */,
 				375911D82842962B003B6DAC /* Card+CoreDataProperties.swift in Sources */,
 				37973B1528433D6200158E5D /* NewCardView.swift in Sources */,
 				375911DF2842A21D003B6DAC /* BaseModel.swift in Sources */,
+				37973B372843A7ED00158E5D /* TabItem.swift in Sources */,
 				37591196283DBB12003B6DAC /* DashboardView.swift in Sources */,
 				375911BD283EA660003B6DAC /* BC.xcdatamodeld in Sources */,
 				375911AA283E7198003B6DAC /* TransactionsListView.swift in Sources */,
 				375911AD283E7262003B6DAC /* TransactionCellView.swift in Sources */,
+				37973B2E2843A77700158E5D /* TabContainerView.swift in Sources */,
 				37A791E22842BFB900E234C7 /* String+Ext.swift in Sources */,
 				37591185283DBA3C003B6DAC /* BudgetControlApp.swift in Sources */,
 				37973B1728433D8600158E5D /* NewCardViewModel.swift in Sources */,

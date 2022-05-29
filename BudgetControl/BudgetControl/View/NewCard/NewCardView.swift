@@ -55,7 +55,7 @@ struct NewCardView: View {
                     Circle()
                         .fill(Color(color))
                         .frame(width: 25, height: 25)
-                        .background{
+                        .background {
                             if viewModel.cardColor == color {
                                 Circle()
                                     .strokeBorder(.gray)
@@ -126,7 +126,7 @@ struct NewCardView: View {
         }
         .padding()
         .background {
-            Color.bcPurple.opacity(0.06)
+            Color.gray.opacity(0.06)
                 .ignoresSafeArea()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
