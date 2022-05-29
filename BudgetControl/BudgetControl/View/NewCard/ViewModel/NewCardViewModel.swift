@@ -34,7 +34,8 @@ final class NewCardViewModel: ObservableObject {
         card.isSelected = true
         card.title = cardTitle
         card.color = cardColor
-        
+        card.transactions = []
+                       
         Card.createCard(with: card,
                         in: context) { result in
             switch result {

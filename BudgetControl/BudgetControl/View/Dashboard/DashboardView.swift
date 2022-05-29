@@ -65,7 +65,6 @@ struct DashboardView: View {
         }
     }
     
-    #warning("Use empty compenents view instead")
     var emptyDashboardView: some View {
         Text("empty_dashboard".localized)
             .padding(.top)

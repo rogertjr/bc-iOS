@@ -9,9 +9,7 @@
 import Foundation
 import CoreData
 
-
 extension Card {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Card> {
         return NSFetchRequest<Card>(entityName: "Card")
     }
@@ -45,7 +43,7 @@ extension Card {
 
 }
 
-extension Card : Identifiable {
+extension Card: Identifiable {
     typealias Handler = (Result<Card, Error>) -> Void
     
     static var allCardsRequest: NSFetchRequest<Card> {
@@ -58,18 +56,10 @@ extension Card : Identifiable {
         with cardModel: Card,
         in context: NSManagedObjectContext,
         completion: @escaping Handler
-    ) {
-        let card = Card(context: context)
-        card.id = UUID()
-        card.creationDate = Date()
-        card.title = cardModel.title
-        card.color = cardModel.color
-        card.isSelected = true
-        card.transactions = []
-        
+    ) {        
         do {
             try context.save()
-            completion(.success(card))
+            completion(.success(cardModel))
         } catch {
             completion(.failure(error))
         }

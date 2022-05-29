@@ -8,7 +8,6 @@
 import Foundation
 import CoreData
 
-
 @MainActor
 final class DashboardViewModel: NSObject, ObservableObject {
     // MARK: - Properties
@@ -38,7 +37,7 @@ final class DashboardViewModel: NSObject, ObservableObject {
             self.selectedCard = cards.filter({ $0.isSelected == true }).first
             self.cards = cards.map(CardModel.init)
         } catch {
-            print("Error while fetching cards - \(error.localizedDescription)")
+            print("⚠️ Error while fetching cards - \(error.localizedDescription)")
         }
     }
 }
@@ -48,6 +47,7 @@ extension DashboardViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard let cards = controller.fetchedObjects as? [Card] else { return }
         self.cards = cards.map(CardModel.init)
+        self.selectedCard = cards.filter({ $0.isSelected == true }).first
     }
 }
     
