@@ -15,14 +15,14 @@ struct TransactionsListView: View {
     
     // MARK: - Subviews
     var headerLabel: some View {
-        Text("Transações")
+        Text("transaction_list_title".localized)
             .font(.title2.bold())
             .opacity(0.7)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     var emptyDashboardView: some View {
-        Text("Não há transações cadastradas")
+        Text("empty_transaction_description".localized)
             .padding(.top)
     }
     

@@ -20,7 +20,7 @@ struct CardCarouselCellView: View {
     var body: some View {
         GeometryReader { proxy in
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(.gray)
+                .fill(Color(viewModel.card.color))
             
             VStack(spacing: 16) {
                 VStack(spacing: 16) {
@@ -43,7 +43,7 @@ struct CardCarouselCellView: View {
                         .background(.white.opacity(0.7),in: Circle())
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Entrada")
+                        Text("income".localized)
                             .font(.caption)
                             .opacity(0.7)
                         
@@ -62,7 +62,7 @@ struct CardCarouselCellView: View {
                         .background(.white.opacity(0.7),in: Circle())
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Saída")
+                        Text("expense".localized)
                             .font(.caption)
                             .opacity(0.7)
                         

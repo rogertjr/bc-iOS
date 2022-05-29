@@ -23,13 +23,13 @@ struct DashboardView: View {
     // MARK: - Subviews
     var welcomeHeaderView: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("Olá,")
+            Text("hello_comma".localized)
                 .font(.caption)
                 .fontWeight(.semibold)
-                .foregroundColor(.gray)
             
             Text("Rogério")
                 .font(.title2.bold())
+                .foregroundColor(Color.bcPurple)
         }
         .frame(maxWidth: .infinity,alignment: .leading)
     }
@@ -40,7 +40,7 @@ struct DashboardView: View {
             EmptyView()
         } label: {
             Image(systemName: "person.crop.circle.fill")
-                .foregroundColor(.gray)
+                .foregroundColor(Color.bcPurple)
                 .frame(width: 40, height: 40)
                 .background(.white, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                 .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
@@ -53,7 +53,7 @@ struct DashboardView: View {
             EmptyView()
         } label: {
             Image(systemName: "gearshape.fill")
-                .foregroundColor(.gray)
+                .foregroundColor(Color.bcPurple)
                 .overlay(content: {
                     Circle()
                         .stroke(.white, lineWidth: 2)
@@ -67,7 +67,7 @@ struct DashboardView: View {
     
     #warning("Use empty compenents view instead")
     var emptyDashboardView: some View {
-        Text("Não há transações ou cartões :(")
+        Text("empty_dashboard".localized)
             .padding(.top)
     }
     
@@ -96,6 +96,10 @@ struct DashboardView: View {
             }
             .padding()
         }
+        .background(
+            Color.bcBackground
+                .ignoresSafeArea()
+        )
         .fullScreenCover(isPresented: $viewModel.goToNewTransaction) {
         } content: {
             NewTransactionView(.init(viewContext,
@@ -124,7 +128,7 @@ struct DashboardView: View {
                 .frame(width: 55, height: 55)
                 .background{
                     Circle()
-                        .fill(.gray)
+                        .fill(Color.bcPurple)
                 }
                 .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
         }
@@ -144,7 +148,7 @@ struct DashboardView: View {
                     .background(content: {
                         if viewModel.filterTabSelected == tab {
                             RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .fill(.blue)
+                                .fill(Color.bcPurple)
                                 .matchedGeometryEffect(id: "TAB", in: animation)
                         }
                     })

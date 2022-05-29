@@ -31,6 +31,8 @@
 		37973B1728433D8600158E5D /* NewCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B1628433D8600158E5D /* NewCardViewModel.swift */; };
 		37973B1B2843427300158E5D /* CardCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B1A2843427300158E5D /* CardCarouselViewModel.swift */; };
 		37973B1E2843432100158E5D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B1D2843432100158E5D /* Date+Ext.swift */; };
+		37973B222843475B00158E5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37973B242843475B00158E5D /* Localizable.strings */; };
+		37973B2628434AEF00158E5D /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B2528434AEF00158E5D /* Color+Ext.swift */; };
 		37A791E22842BFB900E234C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A791E12842BFB900E234C7 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		37973B1628433D8600158E5D /* NewCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardViewModel.swift; sourceTree = "<group>"; };
 		37973B1A2843427300158E5D /* CardCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCarouselViewModel.swift; sourceTree = "<group>"; };
 		37973B1D2843432100158E5D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		37973B232843475B00158E5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		37973B2528434AEF00158E5D /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		37A791E12842BFB900E234C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,19 +165,20 @@
 		3759119E283E6AF7003B6DAC /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				37973B1F2843472D00158E5D /* Localizable */,
 				375911ED2842BF2E003B6DAC /* Extensions */,
-				3759119F283E6AFD003B6DAC /* Component */,
+				3759119F283E6AFD003B6DAC /* Components */,
 			);
 			path = Util;
 			sourceTree = "<group>";
 		};
-		3759119F283E6AFD003B6DAC /* Component */ = {
+		3759119F283E6AFD003B6DAC /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				375911A8283E7104003B6DAC /* Transactions */,
 				375911A0283E6B08003B6DAC /* CardCarousel */,
 			);
-			path = Component;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		375911A0283E6B08003B6DAC /* CardCarousel */ = {
@@ -277,6 +282,7 @@
 			children = (
 				37A791E12842BFB900E234C7 /* String+Ext.swift */,
 				37973B1D2843432100158E5D /* Date+Ext.swift */,
+				37973B2528434AEF00158E5D /* Color+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,6 +310,14 @@
 				37973B1A2843427300158E5D /* CardCarouselViewModel.swift */,
 			);
 			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		37973B1F2843472D00158E5D /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				37973B242843475B00158E5D /* Localizable.strings */,
+			);
+			path = Localizable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3759118C283DBA3E003B6DAC /* Preview Assets.xcassets in Resources */,
+				37973B222843475B00158E5D /* Localizable.strings in Resources */,
 				37591189283DBA3E003B6DAC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +396,7 @@
 				375911D72842962B003B6DAC /* Card+CoreDataClass.swift in Sources */,
 				37973B1E2843432100158E5D /* Date+Ext.swift in Sources */,
 				375911EC2842B6E4003B6DAC /* Transaction+CoreDataProperties.swift in Sources */,
+				37973B2628434AEF00158E5D /* Color+Ext.swift in Sources */,
 				375911B0283E814B003B6DAC /* NewTransactionView.swift in Sources */,
 				375911EB2842B6E4003B6DAC /* Transaction+CoreDataClass.swift in Sources */,
 				375911E22842A482003B6DAC /* CardModel.swift in Sources */,
@@ -403,6 +419,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		37973B242843475B00158E5D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				37973B232843475B00158E5D /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3759118D283DBA3E003B6DAC /* Debug */ = {

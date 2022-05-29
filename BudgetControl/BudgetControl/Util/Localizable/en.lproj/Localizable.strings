@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  BudgetControl
+
+  Created by Rogério Toledo on 29/05/22.
+  
+*/
+
+// Common
+"save" = "Salvar";
+"description" = "Descrição";
+"title" = "Título";
+"income" = "Entrada";
+"expense" = "Saída";
+
+// Dashboard
+"hello_comma" = "Olá,";
+"hello_user" = "Olá, \n%@";
+"empty_dashboard" = "Não há transações ou cartões :(";
+
+// Transaction
+"new_transaction_title" = "Adicionar Transação";
+"empty_transaction_description" = "Não há transações cadastradas";
+"transaction_list_title" = "Transações";
+
+// Card
+"new_card_title" = "Adicionar Cartão";
+"select_card_color" = "Escolha uma cor para o cartão";

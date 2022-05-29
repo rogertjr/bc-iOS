@@ -5,7 +5,17 @@
 //  Created by Rogério Toledo on 28/05/22.
 //
 
-import Foundation
+import UIKit
+
+protocol Localizable {
+    var localized: String { get }
+}
+
+extension String: Localizable {
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+}
 
 extension LosslessStringConvertible {
     var string: String { .init(self) }

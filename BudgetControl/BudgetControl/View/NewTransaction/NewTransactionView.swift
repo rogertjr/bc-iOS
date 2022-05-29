@@ -28,7 +28,7 @@ struct NewTransactionView: View {
     
     // MARK: - SubViews
     var headerLabelView: some View {
-        Text("Adicionar Transação")
+        Text("new_transaction_title".localized)
             .font(.title2)
             .fontWeight(.semibold)
             .opacity(0.5)
@@ -63,7 +63,8 @@ struct NewTransactionView: View {
 
     var titleFieldView: some View {
         Label {
-            TextField("Descrição",text: $viewModel.transactionTitle)
+            TextField("description".localized,
+                      text: $viewModel.transactionTitle)
                 .padding(.leading ,10)
         } icon: {
             Image(systemName: "list.bullet.rectangle.portrait.fill")
@@ -124,7 +125,7 @@ struct NewTransactionView: View {
                 dismiss()
             }
         }) {
-            Text("Salvar")
+            Text("save".localized)
                 .font(.title3)
                 .fontWeight(.semibold)
                 .padding(.vertical, 15)

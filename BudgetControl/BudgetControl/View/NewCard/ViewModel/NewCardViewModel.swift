@@ -14,7 +14,10 @@ final class NewCardViewModel: ObservableObject {
     private (set) var context: NSManagedObjectContext
     
     @Published var cardTitle: String = ""
+    @Published var cardColor: String = "Black"
     @Published var isAbleToContinue: Bool = true
+    
+    let cardColors: [String] = ["Yellow","Green","Blue","Purple","Red","Orange", "Black"]
      
     // MARK: - Helpers
     init(_ context: NSManagedObjectContext) {
@@ -28,6 +31,7 @@ final class NewCardViewModel: ObservableObject {
         card.creationDate = Date()
         card.isSelected = true
         card.title = cardTitle
+        card.color = cardColor
         
         do {
             try context.save()

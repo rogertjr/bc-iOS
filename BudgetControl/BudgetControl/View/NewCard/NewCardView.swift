@@ -21,7 +21,7 @@ struct NewCardView: View {
     
     // MARK: - SubViews
     var headerLabelView: some View {
-        Text("Adicionar Cartão")
+        Text("new_card_title".localized)
             .font(.title2)
             .fontWeight(.semibold)
             .opacity(0.5)
@@ -29,8 +29,9 @@ struct NewCardView: View {
     
     var titleFieldView: some View {
         Label {
-            TextField("Descrição",text: $viewModel.cardTitle)
-                .padding(.leading ,10)
+            TextField("description".localized,
+                      text: $viewModel.cardTitle)
+                .padding(.leading, 10)
         } icon: {
             Image(systemName: "list.bullet.rectangle.portrait.fill")
                 .font(.title3)
@@ -42,7 +43,39 @@ struct NewCardView: View {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(.white)
         }
-        .padding(.top,25)
+        .padding(.top, 25)
+    }
+    
+    var colorSectionView: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("select_card_color".localized)
+                .foregroundColor(.gray)
+                .font(.caption)
+                .fontWeight(.semibold)
+
+            HStack(spacing: 16) {
+                ForEach(viewModel.cardColors, id: \.self) { color in
+                    Circle()
+                        .fill(Color(color))
+                        .frame(width: 25, height: 25)
+                        .background{
+                            if viewModel.cardColor == color {
+                                Circle()
+                                    .strokeBorder(.gray)
+                                    .padding(-3)
+                            }
+                        }
+                        .contentShape(Circle())
+                        .onTapGesture {
+                            viewModel.cardColor = color
+                        }
+                }
+            }
+            .padding(.top, 10)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.top, 10)
+        .padding(.horizontal, 15)
     }
     
     var saveButtonView: some View {
@@ -51,7 +84,7 @@ struct NewCardView: View {
                 dismiss()
             }
         }) {
-            Text("Salvar")
+            Text("save".localized)
                 .font(.title3)
                 .fontWeight(.semibold)
                 .padding(.vertical, 15)
@@ -85,6 +118,7 @@ struct NewCardView: View {
             VStack(spacing: 16) {
                 headerLabelView
                 titleFieldView
+                colorSectionView
             }
             .frame(maxHeight: .infinity,alignment: .center)
             
