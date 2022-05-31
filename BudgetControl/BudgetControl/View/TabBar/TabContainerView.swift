@@ -100,7 +100,6 @@ extension TabContainerView {
         switch tabItemType {
         case .dashboard:
             DashboardView(.init(viewContext))
-                .environment(\.managedObjectContext, viewContext)
                 .environmentObject(sharedViewModel)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             

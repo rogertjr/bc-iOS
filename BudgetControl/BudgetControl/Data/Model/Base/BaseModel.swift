@@ -16,7 +16,7 @@ protocol BaseModel {
 
 extension BaseModel where Self: NSManagedObject {
     static var viewConext: NSManagedObjectContext {
-        PersistenceProvider.default.context
+        PersistenceManager.shared.context
     }
     
     func save() throws {

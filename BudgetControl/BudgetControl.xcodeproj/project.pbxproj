@@ -19,7 +19,7 @@
 		375911B3283E823B003B6DAC /* NewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911B2283E823B003B6DAC /* NewTransactionViewModel.swift */; };
 		375911B5283E8766003B6DAC /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911B4283E8766003B6DAC /* DashboardViewModel.swift */; };
 		375911BD283EA660003B6DAC /* BC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 375911BB283EA660003B6DAC /* BC.xcdatamodeld */; };
-		375911C0283EA6AF003B6DAC /* PersistenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911BF283EA6AF003B6DAC /* PersistenceProvider.swift */; };
+		375911C0283EA6AF003B6DAC /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911BF283EA6AF003B6DAC /* PersistenceManager.swift */; };
 		375911D72842962B003B6DAC /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911D52842962A003B6DAC /* Card+CoreDataClass.swift */; };
 		375911D82842962B003B6DAC /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911D62842962B003B6DAC /* Card+CoreDataProperties.swift */; };
 		375911DF2842A21D003B6DAC /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375911DE2842A21D003B6DAC /* BaseModel.swift */; };
@@ -57,7 +57,7 @@
 		375911B2283E823B003B6DAC /* NewTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionViewModel.swift; sourceTree = "<group>"; };
 		375911B4283E8766003B6DAC /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		375911BC283EA660003B6DAC /* BC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BC.xcdatamodel; sourceTree = "<group>"; };
-		375911BF283EA6AF003B6DAC /* PersistenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceProvider.swift; sourceTree = "<group>"; };
+		375911BF283EA6AF003B6DAC /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		375911D52842962A003B6DAC /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
 		375911D62842962B003B6DAC /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		375911DE2842A21D003B6DAC /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 		37591197283E69FA003B6DAC /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				375911BE283EA69E003B6DAC /* Persistence */,
+				375911BE283EA69E003B6DAC /* Manager */,
 				3759119B283E6A1F003B6DAC /* Model */,
 			);
 			path = Data;
@@ -252,12 +252,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		375911BE283EA69E003B6DAC /* Persistence */ = {
+		375911BE283EA69E003B6DAC /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				375911BF283EA6AF003B6DAC /* PersistenceProvider.swift */,
+				375911BF283EA6AF003B6DAC /* PersistenceManager.swift */,
 			);
-			path = Persistence;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		375911D22842933A003B6DAC /* ViewModel */ = {
@@ -468,7 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				375911C0283EA6AF003B6DAC /* PersistenceProvider.swift in Sources */,
+				375911C0283EA6AF003B6DAC /* PersistenceManager.swift in Sources */,
 				37973B1B2843427300158E5D /* CardCarouselViewModel.swift in Sources */,
 				375911D72842962B003B6DAC /* Card+CoreDataClass.swift in Sources */,
 				37973B312843A79800158E5D /* TabContainerViewModel.swift in Sources */,

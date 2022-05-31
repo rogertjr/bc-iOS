@@ -51,48 +51,4 @@ extension Card: Identifiable {
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Card.creationDate, ascending: false)]
         return request
     }
-    
-    static func createCard(
-        with cardModel: Card,
-        in context: NSManagedObjectContext,
-        completion: @escaping Handler
-    ) {        
-        do {
-            try context.save()
-            completion(.success(cardModel))
-        } catch {
-            completion(.failure(error))
-        }
-    }
-
-    func delete(
-        _ cards: [Card],
-        in context: NSManagedObjectContext,
-        completion: @escaping (Result<[Card], Error>) -> Void
-    ) {
-        for card in cards {
-            context.delete(card)
-        }
-        
-        do {
-            try context.save()
-            completion(.success(cards))
-        } catch {
-            completion(.failure(error))
-        }
-    }
-
-    func setSelected(
-        _ card: Card,
-        in context: NSManagedObjectContext,
-        completion: @escaping Handler
-    ) {
-        card.isSelected.toggle()
-        do {
-            try context.save()
-            completion(.success(card))
-        } catch {
-            completion(.failure(error))
-        }
-    }
 }

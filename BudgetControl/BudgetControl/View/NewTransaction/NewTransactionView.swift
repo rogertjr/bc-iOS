@@ -203,7 +203,6 @@ private extension NewTransactionView {
 // MARK: - PreviewProvider
 struct NewTransactionView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTransactionView(.init(PersistenceProvider.default.context,
-                                 selectedCard: nil))
+        NewTransactionView(.init())
     }
 }

@@ -11,10 +11,8 @@ import CoreData
 final class NewTransactionViewModel: ObservableObject {
     
     // MARK: - Properties
-    private (set) var context: NSManagedObjectContext
-    
     private var selectedCard: Card?
-    
+
     @Published var amount: Double?
     @Published var type: TransactionType = .all
     @Published var date: Date = Date()
@@ -25,11 +23,7 @@ final class NewTransactionViewModel: ObservableObject {
     }
     
     // MARK: - Helpers
-    init(
-        _ context: NSManagedObjectContext,
-        selectedCard: Card?
-    ) {
-        self.context = context
+    init(_ selectedCard: Card? = nil) {
         self.selectedCard = selectedCard
     }
     
@@ -44,16 +38,15 @@ final class NewTransactionViewModel: ObservableObject {
     func saveNewTransaction() {
         guard let selectedCard = selectedCard else { return }
         
-        let transaction = Transaction(context: context)
+        let transaction = Transaction(context: PersistenceManager.shared.context)
         transaction.id = UUID()
         transaction.title = transactionTitle
         transaction.amount = amount?.string ?? "0"
         transaction.type = type.rawValue
         transaction.date = date
         
-        Transaction.createTransaction(with: transaction,
-                                      card: selectedCard,
-                                      in: context) { result in
+        PersistenceManager.shared.createTransaction(with: transaction,
+                                                    selectedCard: selectedCard) { result in
             switch result {
             case .success:
                 print("✅ - Transaction successfully saved")

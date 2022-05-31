@@ -50,4 +50,3 @@ extension DashboardViewModel: NSFetchedResultsControllerDelegate {
         self.selectedCard = cards.filter({ $0.isSelected == true }).first
     }
 }
-    

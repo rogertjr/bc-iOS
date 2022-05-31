@@ -12,12 +12,7 @@ struct NewCardView: View {
     @Environment(\.dismiss) private var dismiss
     
     // MARK: - Properties
-    @ObservedObject private var viewModel: NewCardViewModel
-    
-    // MARK: - Init
-    init(_ viewModel: NewCardViewModel) {
-        self.viewModel = viewModel
-    }
+    @ObservedObject private var viewModel = NewCardViewModel()
     
     // MARK: - Layout
     var body: some View {
@@ -79,9 +74,9 @@ private extension NewCardView {
                 .fontWeight(.semibold)
 
             HStack(spacing: 16) {
-                ForEach(viewModel.cardColors, id: \.self) { color in
+                ForEach(CardColors.allCases, id: \.self) { color in
                     Circle()
-                        .fill(Color(color))
+                        .fill(Color(color.rawValue))
                         .frame(width: 25, height: 25)
                         .background {
                             if viewModel.cardColor == color {
@@ -147,6 +142,6 @@ private extension NewCardView {
 // MARK: - PreviewProvider
 struct NewCardView_Previews: PreviewProvider {
     static var previews: some View {
-        NewCardView(.init(PersistenceProvider.default.context))
+        NewCardView()
     }
 }

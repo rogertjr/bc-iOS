@@ -9,35 +9,17 @@ import Foundation
 import CoreData
 
 final class NewCardViewModel: ObservableObject {
-    
     // MARK: - Properties
-    private (set) var context: NSManagedObjectContext
-    
     @Published var cardTitle: String = ""
-    @Published var cardColor: String = "Black"
+    @Published var cardColor: CardColors = .black
     var isAbleToContinue: Bool {
-        !cardTitle.isEmpty && !cardColor.isEmpty
-    }
-    
-    let cardColors: [String] = ["Yellow", "Green", "Blue", "Purple", "Red", "Orange", "Black"]
-     
-    // MARK: - Helpers
-    init(_ context: NSManagedObjectContext) {
-        self.context = context
+        !cardTitle.isEmpty
     }
     
     // MARK: - Persitence
     func saveNewCard() {
-        let card = Card(context: context)
-        card.id = UUID()
-        card.creationDate = Date()
-        card.isSelected = true
-        card.title = cardTitle
-        card.color = cardColor
-        card.transactions = []
-                       
-        Card.createCard(with: card,
-                        in: context) { result in
+        PersistenceManager.shared.createCard(title: cardTitle,
+                                             color: cardColor.rawValue) { result in
             switch result {
             case .success:
                 print("✅ - Card successfully saved")

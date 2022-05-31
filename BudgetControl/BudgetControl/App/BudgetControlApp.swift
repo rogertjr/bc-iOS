@@ -9,8 +9,10 @@ import SwiftUI
 
 @main
 struct BudgetControlApp: App {
-    private let context = PersistenceProvider.default.context
+    // MARK: - Properties
+    private let context = PersistenceManager.shared.context
     
+    // MARK: - Layout
     var body: some Scene {
         WindowGroup {
             TabContainerView()

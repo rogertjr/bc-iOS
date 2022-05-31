@@ -9,6 +9,17 @@ import Foundation
 import CoreData
 import SwiftUI
 
+enum CardColors: String, CaseIterable {
+    case yellow = "Yellow"
+    case green = "Green"
+    case blue = "Blue"
+    case purple = "Purple"
+    case red = "Red"
+    case orange = "Orange"
+    case black = "Black"
+}
+
+let cardColors: [String] = []
 struct CardModel: Identifiable {
     // MARK: - Properties
     private var card: Card

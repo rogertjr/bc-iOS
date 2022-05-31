@@ -32,37 +32,4 @@ extension Transaction : Identifiable {
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Transaction.date, ascending: false)]
         return request
     }
-
-    static func createTransaction(
-        with transactionModel: Transaction,
-        card: Card,
-        in context: NSManagedObjectContext,
-        completion: @escaping (Result<Card, Error>) -> Void
-    ) {
-        
-        card.addToTransactions(transactionModel)
-
-        do {
-            try context.save()
-            completion(.success(card))
-        } catch {
-            completion(.failure(error))
-        }
-    }
-
-    func delete(
-        _ transactions: [Transaction],
-        in context: NSManagedObjectContext,
-        completion: (Result<[Transaction], Error>) -> Void
-    ) {
-        for transaction in transactions {
-            context.delete(transaction)
-        }
-        do {
-            try context.save()
-            completion(.success(transactions))
-        } catch {
-            completion(.failure(error))
-        }
-    }
 }

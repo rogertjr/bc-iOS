@@ -10,7 +10,6 @@ import SwiftUI
 struct DashboardView: View {
     // MARK: - Env
     @Namespace var animation
-    @Environment(\.managedObjectContext) var viewContext
     
     // MARK: - Properties
     @ObservedObject private var viewModel: DashboardViewModel
@@ -61,12 +60,11 @@ struct DashboardView: View {
         )
         .fullScreenCover(isPresented: $viewModel.goToNewTransaction) {
         } content: {
-            NewTransactionView(.init(viewContext,
-                                     selectedCard: viewModel.selectedCard))
+            NewTransactionView(.init(viewModel.selectedCard))
         }
         .fullScreenCover(isPresented: $viewModel.goToNewCard) {
         } content: {
-            NewCardView(.init(viewContext))
+            NewCardView()
         }
         .overlay(alignment: .bottomTrailing) {
             addButton()
@@ -170,6 +168,6 @@ private extension DashboardView {
 // MARK: - PreviewProvider
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView(.init(PersistenceProvider.default.context))
+        DashboardView(.init(PersistenceManager.shared.context))
     }
 }
