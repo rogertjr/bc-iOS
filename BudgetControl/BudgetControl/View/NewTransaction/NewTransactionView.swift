@@ -21,7 +21,34 @@ struct NewTransactionView: View {
         self.viewModel = viewModel
     }
     
-    // MARK: - SubViews
+    // MARK: - Layout
+    var body: some View {
+        VStack {
+            VStack(spacing: 16) {
+                headerLabelView
+                currencyFieldView
+                titleFieldView
+                transactionTypeView
+                dateFieldView
+            }
+            .frame(maxHeight: .infinity,alignment: .center)
+            
+            saveButtonView
+        }
+        .padding()
+        .background {
+            Color.gray.opacity(0.06)
+                .ignoresSafeArea()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .overlay(alignment: .topTrailing) {
+            closeButtonView
+        }
+    }
+}
+
+// MARK: - SubViews
+private extension NewTransactionView {
     var headerLabelView: some View {
         Text("new_transaction_title".localized)
             .font(.title2)
@@ -85,7 +112,10 @@ struct NewTransactionView: View {
     
     var dateFieldView: some View {
         Label {
-            DatePicker.init("", selection: $viewModel.date, in: Date.distantPast...Date(), displayedComponents: [.date])
+            DatePicker.init("",
+                            selection: $viewModel.date,
+                            in: Date.distantPast...Date(),
+                            displayedComponents: [.date])
                 .datePickerStyle(.compact)
                 .labelsHidden()
                 .frame(maxWidth: .infinity,alignment: .leading)
@@ -97,7 +127,8 @@ struct NewTransactionView: View {
         .padding(.vertical, 20)
         .padding(.horizontal, 15)
         .background {
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
+            RoundedRectangle(cornerRadius: 12,
+                             style: .continuous)
                 .fill(.white)
         }
         .padding(.top,5)
@@ -114,7 +145,8 @@ struct NewTransactionView: View {
                 .padding(.vertical, 15)
                 .frame(maxWidth: .infinity)
                 .background {
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    RoundedRectangle(cornerRadius: 12,
+                                     style: .continuous)
                         .fill(Color.bcPurple)
                 }
                 .foregroundColor(.white)
@@ -133,32 +165,6 @@ struct NewTransactionView: View {
                 .foregroundColor(.bcPurple)
         }
         .padding()
-    }
-    
-    // MARK: - Layout
-    var body: some View {
-        VStack {
-            VStack(spacing: 16) {
-                headerLabelView
-                currencyFieldView
-                titleFieldView
-                transactionTypeView
-                dateFieldView
-            }
-            
-            .frame(maxHeight: .infinity,alignment: .center)
-            
-            saveButtonView
-        }
-        .padding()
-        .background {
-            Color.gray.opacity(0.06)
-                .ignoresSafeArea()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .overlay(alignment: .topTrailing) {
-            closeButtonView
-        }
     }
     
     // MARK: - View Builder
@@ -188,7 +194,8 @@ struct NewTransactionView: View {
                     .padding(.trailing, 10)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity,
+               alignment: .leading)
         .padding(.leading, 10)
     }
 }

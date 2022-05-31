@@ -19,70 +19,88 @@ struct CardCarouselCellView: View {
     // MARK: - Layout
     var body: some View {
         GeometryReader { proxy in
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
+            RoundedRectangle(cornerRadius: 20,
+                             style: .continuous)
                 .fill(Color(viewModel.card.color))
             
             VStack(spacing: 16) {
                 VStack(spacing: 16) {
-                    Text(viewModel.currentMonth.currentMonthDateString())
-                        .font(.callout)
-                        .fontWeight(.semibold)
-                    
-                    Text(viewModel.card.balance.currencyFormatting())
-                        .font(.system(size: 35, weight: .bold))
-                        .lineLimit(1)
-                        .padding(.bottom,5)
+                    currentMonthView
+                    cardBalanceView
                 }
                 .offset(y: -10)
                 
-                HStack(spacing: 16) {
-                    Image(systemName: "arrow.down")
-                        .font(.caption.bold())
-                        .foregroundColor(.green)
-                        .frame(width: 30, height: 30)
-                        .background(.green.opacity(0.3),
-                                    in: Circle())
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("income".localized)
-                            .font(.caption)
-                            .opacity(0.7)
-                        
-                        Text(viewModel.card.income.currencyFormatting())
-                            .font(.callout)
-                            .fontWeight(.semibold)
-                            .lineLimit(1)
-                            .fixedSize()
-                    }
-                    .frame(maxWidth: .infinity,alignment: .leading)
-                    
-                    Image(systemName: "arrow.up")
-                        .font(.caption.bold())
-                        .foregroundColor(.red)
-                        .frame(width: 30, height: 30)
-                        .background(.red.opacity(0.3),
-                                    in: Circle())
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("expense".localized)
-                            .font(.caption)
-                            .opacity(0.7)
-                        
-                        Text(viewModel.card.expense.currencyFormatting())
-                            .font(.callout)
-                            .fontWeight(.semibold)
-                            .lineLimit(1)
-                            .fixedSize()
-                    }
-                }
-                .padding(.horizontal)
-                .padding(.trailing)
-                .offset(y: 15)
+                transactionsView
             }
             .foregroundColor(.white)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .frame(maxWidth: .infinity,
+                   maxHeight: .infinity,
+                   alignment: .center)
         }
-        .frame(width: 340, height: 220)
+        .frame(width: 340,
+               height: 220)
         .padding(.top)
+    }
+}
+
+// MARK: - Subviews
+private extension CardCarouselCellView {
+    var currentMonthView: some View {
+        Text(viewModel.currentMonth.currentMonthDateString())
+            .font(.callout)
+            .fontWeight(.semibold)
+    }
+    
+    var cardBalanceView: some View {
+        Text(viewModel.card.balance.currencyFormatting())
+            .font(.system(size: 35, weight: .bold))
+            .lineLimit(1)
+    }
+    
+    var transactionsView: some View {
+        HStack(spacing: 16) {
+            CircleImageView(imageSystemName: "arrow.down",
+                            foregroundColor: .green)
+            
+            incomeTransactionsView
+                .frame(maxWidth: .infinity,
+                       alignment: .leading)
+            
+            CircleImageView(imageSystemName: "arrow.up",
+                            foregroundColor: .red)
+            
+            expenseTransactionsView
+        }
+        .padding(.horizontal)
+        .padding(.trailing)
+        .offset(y: 15)
+    }
+    
+    var incomeTransactionsView: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("income".localized)
+                .font(.caption)
+                .opacity(0.7)
+            
+            Text(viewModel.card.income.currencyFormatting())
+                .font(.callout)
+                .fontWeight(.semibold)
+                .lineLimit(1)
+                .fixedSize()
+        }
+    }
+    
+    var expenseTransactionsView: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("expense".localized)
+                .font(.caption)
+                .opacity(0.7)
+            
+            Text(viewModel.card.expense.currencyFormatting())
+                .font(.callout)
+                .fontWeight(.semibold)
+                .lineLimit(1)
+                .fixedSize()
+        }
     }
 }

@@ -40,6 +40,7 @@
 		37973B372843A7ED00158E5D /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B362843A7ED00158E5D /* TabItem.swift */; };
 		37973B3A2843A87700158E5D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37973B392843A87700158E5D /* MainViewModel.swift */; };
 		37A791E22842BFB900E234C7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A791E12842BFB900E234C7 /* String+Ext.swift */; };
+		37FC24D9284648D800149207 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FC24D8284648D800149207 /* CircleImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		37973B362843A7ED00158E5D /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		37973B392843A87700158E5D /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		37A791E12842BFB900E234C7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		37FC24D8284648D800149207 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 		3759119F283E6AFD003B6DAC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				37FC24D7284648BE00149207 /* Images */,
 				375911A8283E7104003B6DAC /* Transactions */,
 				375911A0283E6B08003B6DAC /* CardCarousel */,
 			);
@@ -386,6 +389,14 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		37FC24D7284648BE00149207 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				37FC24D8284648D800149207 /* CircleImageView.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -475,6 +486,7 @@
 				37973B292843943700158E5D /* CurrencyTextField.swift in Sources */,
 				375911B3283E823B003B6DAC /* NewTransactionViewModel.swift in Sources */,
 				37973B332843A7B700158E5D /* TabButtonView.swift in Sources */,
+				37FC24D9284648D800149207 /* CircleImageView.swift in Sources */,
 				375911D82842962B003B6DAC /* Card+CoreDataProperties.swift in Sources */,
 				37973B1528433D6200158E5D /* NewCardView.swift in Sources */,
 				375911DF2842A21D003B6DAC /* BaseModel.swift in Sources */,

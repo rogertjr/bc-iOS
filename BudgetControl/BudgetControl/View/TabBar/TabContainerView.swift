@@ -20,7 +20,29 @@ struct TabContainerView: View {
         UITabBar.appearance().isHidden = true
     }
     
-    // MARK: - Subviews
+    // MARK: - Layout
+    var body: some View {
+        VStack(spacing: 0) {
+            productPages
+            customBottomTabBar
+        }
+        .background(
+            Color.bcBackground
+                .ignoresSafeArea())
+        .overlay(
+            ZStack {
+                if sharedViewModel.showProfile {
+//                    ProfileView()
+//                        .environmentObject(sharedViewModel)
+//                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
+                }
+            }
+        )
+    }
+}
+
+// MARK: - Subviews
+private extension TabContainerView {
     var productPages: some View {
         TabView(selection: $viewModel.selectedTab) {
             ForEach(viewModel.tabItems, id: \.self) { item in
@@ -61,33 +83,13 @@ struct TabContainerView: View {
                         )
                         .frame(maxWidth: .infinity)
                         .foregroundColor(viewModel.selectedTab == tab.type
-                                         ? Color.bcPurple
-                                         : Color.gray)
+                                            ? Color.bcPurple
+                                            : Color.gray)
                 }
             }
         }
         .padding([.horizontal,.top])
         .padding(.bottom, 10)
-    }
-    
-    // MARK: - Subviews
-    var body: some View {
-        VStack(spacing: 0) {
-            productPages
-            customBottomTabBar
-        }
-        .background(
-            Color.bcBackground
-                .ignoresSafeArea())
-        .overlay(
-            ZStack {
-                if sharedViewModel.showProfile {
-//                    ProfileView()
-//                        .environmentObject(sharedViewModel)
-//                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
-                }
-            }
-        )
     }
 }
 

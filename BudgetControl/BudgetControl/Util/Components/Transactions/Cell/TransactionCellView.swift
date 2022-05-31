@@ -29,25 +29,31 @@ struct TransactionCellView: View {
             Text(transaction.title)
                 .fontWeight(.semibold)
                 .lineLimit(1)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity,
+                       alignment: .leading)
             
             VStack(alignment: .trailing, spacing: 7) {
                 let amount = transaction.amount.currencyFormatting()
-                let price = (transaction.type == .expense) ? String(format: "-%@", amount) : String(format: "+%@", amount)
+                let price = (transaction.type == .expense)
+                    ? String(format: "-%@", amount)
+                    : String(format: "+%@", amount)
                 Text(price)
                     .font(.callout)
                     .opacity(0.7)
                     .foregroundColor(transaction.type == .expense ? .red : .green)
-                Text(transaction.date.formatted(date: .numeric, time: .omitted))
+                Text(transaction.date.formatted(date: .numeric,
+                                                time: .omitted))
                     .font(.caption)
                     .opacity(0.5)
             }
         }
         .padding()
         .background {
-            RoundedRectangle(cornerRadius: 15, style: .continuous)
+            RoundedRectangle(cornerRadius: 15,
+                             style: .continuous)
                 .fill(Color.bcBackground)
         }
-        .shadow(color: .black.opacity(0.08), radius: 5, x: 5, y: 5)
+        .shadow(color: .black.opacity(0.08),
+                radius: 5, x: 5, y: 5)
     }
 }

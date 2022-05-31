@@ -20,38 +20,6 @@ struct DashboardView: View {
     init(_ viewModel: DashboardViewModel) {
         self.viewModel = viewModel
     }
-        
-    // MARK: - Subviews
-    var welcomeHeaderView: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("hello_comma".localized)
-                .font(.caption)
-                .fontWeight(.semibold)
-            
-            Text("Rogério")
-                .font(.title2.bold())
-                .foregroundColor(Color.bcPurple)
-        }
-        .frame(maxWidth: .infinity,alignment: .leading)
-    }
-    
-    var profileButtonHeaderView: some View {
-        Image(systemName: "person.crop.circle.fill")
-            .foregroundColor(Color.bcPurple)
-            .frame(width: 40, height: 40)
-            .background(Color.bcBackground, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-            .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
-            .onTapGesture {
-                withAnimation {
-                    sharedViewModel.showProfile = true
-                }
-            }
-    }
-    
-    var emptyDashboardView: some View {
-        Text("empty_dashboard".localized)
-            .padding(.top)
-    }
     
     // MARK: - Layout
     var body: some View {
@@ -71,10 +39,13 @@ struct DashboardView: View {
                                          shouldFilter: true,
                                          filterSelected: viewModel.filterTabSelected)
                         .padding([.top, .leading, .trailing])
-                        .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
+                        .frame(maxWidth: .infinity,
+                               maxHeight: .infinity,
+                               alignment: .top)
                         .background(
                             Color.gray.opacity(0.06)
-                                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                .clipShape(RoundedRectangle(cornerRadius: 25,
+                                                            style: .continuous))
                                 .ignoresSafeArea()
                                 .padding(.bottom)
                         )
@@ -101,6 +72,44 @@ struct DashboardView: View {
             addButton()
         }
     }
+}
+
+// MARK: - Subviews
+private extension DashboardView {
+    var welcomeHeaderView: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("hello_comma".localized)
+                .font(.caption)
+                .fontWeight(.semibold)
+            
+            Text("Rogério")
+                .font(.title2.bold())
+                .foregroundColor(Color.bcPurple)
+        }
+        .frame(maxWidth: .infinity,
+               alignment: .leading)
+    }
+    
+    var profileButtonHeaderView: some View {
+        Image(systemName: "person.crop.circle.fill")
+            .foregroundColor(Color.bcPurple)
+            .frame(width: 40, height: 40)
+            .background(Color.bcBackground,
+                        in: RoundedRectangle(cornerRadius: 10,
+                                             style: .continuous))
+            .shadow(color: .black.opacity(0.1),
+                    radius: 5, x: 5, y: 5)
+            .onTapGesture {
+                withAnimation {
+                    sharedViewModel.showProfile = true
+                }
+            }
+    }
+    
+    var emptyDashboardView: some View {
+        Text("empty_dashboard".localized)
+            .padding(.top)
+    }
     
     // MARK: - View Builder
     @ViewBuilder
@@ -114,11 +123,12 @@ struct DashboardView: View {
                 .font(.system(size: 25, weight: .medium))
                 .foregroundColor(.white)
                 .frame(width: 55, height: 55)
-                .background{
+                .background {
                     Circle()
                         .fill(Color.bcPurple)
                 }
-                .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
+                .shadow(color: .black.opacity(0.1),
+                        radius: 5, x: 5, y: 5)
         }
         .padding()
     }
@@ -148,10 +158,12 @@ struct DashboardView: View {
         }
         .padding(5)
         .background {
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
+            RoundedRectangle(cornerRadius: 10,
+                             style: .continuous)
                 .fill(Color.bcBackground)
         }
-        .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
+        .shadow(color: .black.opacity(0.1),
+                radius: 5, x: 5, y: 5)
     }
 }
 

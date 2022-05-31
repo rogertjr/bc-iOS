@@ -13,18 +13,6 @@ struct TransactionsListView: View {
     var shouldFilter: Bool = false
     var filterSelected: TransactionType = .income
     
-    // MARK: - Subviews
-    var headerLabel: some View {
-        Text("transaction_list_title".localized)
-            .font(.title2.bold())
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-    
-    var emptyDashboardView: some View {
-        Text("empty_transaction_description".localized)
-            .padding(.top)
-    }
-    
     // MARK: - Layout
     var body: some View {
         VStack(spacing: 16) {
@@ -41,11 +29,26 @@ struct TransactionsListView: View {
                         }
                     }
                 } else {
-                    emptyDashboardView
+                    emptyListView
                 }
             } else {
-                emptyDashboardView
+                emptyListView
             }
         }
+    }
+}
+
+// MARK: - Subviews
+private extension TransactionsListView {
+    var headerLabel: some View {
+        Text("transaction_list_title".localized)
+            .font(.title2.bold())
+            .frame(maxWidth: .infinity,
+                   alignment: .leading)
+    }
+    
+    var emptyListView: some View {
+        Text("empty_transaction_description".localized)
+            .padding(.top)
     }
 }

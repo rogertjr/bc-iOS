@@ -19,7 +19,34 @@ struct NewCardView: View {
         self.viewModel = viewModel
     }
     
-    // MARK: - SubViews
+    // MARK: - Layout
+    var body: some View {
+        VStack {
+            VStack(spacing: 16) {
+                headerLabelView
+                titleFieldView
+                colorSectionView
+            }
+            .frame(maxHeight: .infinity,
+                   alignment: .center)
+            
+            saveButtonView
+        }
+        .padding()
+        .background {
+            Color.gray.opacity(0.06)
+                .ignoresSafeArea()
+        }
+        .frame(maxWidth: .infinity,
+               maxHeight: .infinity)
+        .overlay(alignment: .topTrailing) {
+            closeButtonView
+        }
+    }
+}
+
+// MARK: - SubViews
+private extension NewCardView {
     var headerLabelView: some View {
         Text("new_card_title".localized)
             .font(.title2)
@@ -38,7 +65,8 @@ struct NewCardView: View {
         .padding(.vertical, 20)
         .padding(.horizontal, 15)
         .background{
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
+            RoundedRectangle(cornerRadius: 12,
+                             style: .continuous)
                 .fill(.white)
         }
         .padding(.top, 25)
@@ -70,12 +98,14 @@ struct NewCardView: View {
             }
             .padding(.top, 10)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity,
+               alignment: .leading)
         .padding(.top, 10)
         .padding(.horizontal, 15)
         .padding(.bottom, 15)
         .background{
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
+            RoundedRectangle(cornerRadius: 12,
+                             style: .continuous)
                 .fill(.white)
         }
     }
@@ -91,7 +121,8 @@ struct NewCardView: View {
                 .padding(.vertical, 15)
                 .frame(maxWidth: .infinity)
                 .background{
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    RoundedRectangle(cornerRadius: 12,
+                                     style: .continuous)
                         .fill(Color.bcPurple)
                 }
                 .foregroundColor(.white)
@@ -110,29 +141,6 @@ struct NewCardView: View {
                 .foregroundColor(.bcPurple)
         }
         .padding()
-    }
-    
-    // MARK: - Layout
-    var body: some View {
-        VStack {
-            VStack(spacing: 16) {
-                headerLabelView
-                titleFieldView
-                colorSectionView
-            }
-            .frame(maxHeight: .infinity,alignment: .center)
-            
-            saveButtonView
-        }
-        .padding()
-        .background {
-            Color.gray.opacity(0.06)
-                .ignoresSafeArea()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .overlay(alignment: .topTrailing) {
-            closeButtonView
-        }
     }
 }
 
