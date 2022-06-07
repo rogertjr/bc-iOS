@@ -10,14 +10,13 @@ import SwiftUI
 @main
 struct BudgetControlApp: App {
     // MARK: - Properties
-    private let context = PersistenceManager.shared.context
+    @StateObject private var session = SessionManager()
     
     // MARK: - Layout
     var body: some Scene {
         WindowGroup {
-            TabContainerView()
-                .environment(\.managedObjectContext, context)
-                .accentColor(.primary)
+            MainAppView()
+                .environmentObject(session)
         }
     }
 }

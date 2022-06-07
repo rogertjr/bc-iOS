@@ -80,7 +80,7 @@ private extension DashboardView {
                 .font(.caption)
                 .fontWeight(.semibold)
             
-            Text("Rogério")
+            Text("User")
                 .font(.title2.bold())
                 .foregroundColor(Color.bcPurple)
         }

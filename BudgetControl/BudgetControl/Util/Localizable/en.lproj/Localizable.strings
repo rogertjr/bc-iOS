@@ -12,8 +12,10 @@
 "title" = "Título";
 "income" = "Entrada";
 "expense" = "Saída";
+"continue" = "Continuar";
 
 // Dashboard
+"hello" = "Olá";
 "hello_comma" = "Olá,";
 "hello_user" = "Olá, \n%@";
 "empty_dashboard" = "Não há transações ou cartões :(";
