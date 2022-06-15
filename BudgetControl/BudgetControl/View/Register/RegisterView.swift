@@ -1,31 +1,26 @@
 //
-//  NewCardView.swift
+//  RegisterView.swift
 //  BudgetControl
 //
-//  Created by Rogério Toledo on 29/05/22.
+//  Created by Rogério Toledo on 14/06/22.
 //
 
 import SwiftUI
 
-struct NewCardView: View {
+struct RegisterView: View {
     // MARK: - Env
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var session: SessionManager
     
     // MARK: - Properties
-    @ObservedObject private var viewModel: NewCardViewModel
-    
-    // MARK: - Init
-    init(_ viewModel: NewCardViewModel) {
-        self.viewModel = viewModel
-    }
+    @ObservedObject private var viewModel = RegisterViewModel()
+    @State private var dismiss = false
     
     // MARK: - Layout
     var body: some View {
         VStack {
             VStack(spacing: 16) {
                 headerLabelView
-                titleFieldView
-                colorSectionView
+                userNameFieldView
             }
             .frame(maxHeight: .infinity,
                    alignment: .center)
@@ -39,29 +34,30 @@ struct NewCardView: View {
         }
         .frame(maxWidth: .infinity,
                maxHeight: .infinity)
-        .overlay(alignment: .topTrailing) {
+        .overlay(alignment: .topLeading) {
             closeButtonView
         }
+        .animation(.easeInOut, value: dismiss)
         .alert(isPresented: $viewModel.hasError,
                        error: viewModel.error) { }
     }
 }
 
 // MARK: - SubViews
-private extension NewCardView {
+private extension RegisterView {
     var headerLabelView: some View {
-        Text("new_card_title".localized)
+        Text("register_title".localized)
             .font(.title2)
             .fontWeight(.semibold)
     }
     
-    var titleFieldView: some View {
+    var userNameFieldView: some View {
         Label {
-            TextField("description".localized,
-                      text: $viewModel.cardTitle)
+            TextField("register_username".localized,
+                      text: $viewModel.userName)
                 .padding(.leading, 10)
         } icon: {
-            Image(systemName: "doc.text.fill")
+            Image(systemName: "person.fill")
                 .font(.title3)
         }
         .padding(.vertical, 20)
@@ -74,49 +70,11 @@ private extension NewCardView {
         .padding(.top, 25)
     }
     
-    var colorSectionView: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("select_card_color".localized)
-                .font(.caption)
-                .fontWeight(.semibold)
-
-            HStack(spacing: 16) {
-                ForEach(CardColors.allCases, id: \.self) { color in
-                    Circle()
-                        .fill(Color(color.rawValue))
-                        .frame(width: 25, height: 25)
-                        .background {
-                            if viewModel.cardColor == color {
-                                Circle()
-                                    .strokeBorder(.gray)
-                                    .padding(-3)
-                            }
-                        }
-                        .contentShape(Circle())
-                        .onTapGesture {
-                            viewModel.cardColor = color
-                        }
-                }
-            }
-            .padding(.top, 10)
-        }
-        .frame(maxWidth: .infinity,
-               alignment: .leading)
-        .padding(.top, 10)
-        .padding(.horizontal, 15)
-        .padding(.bottom, 15)
-        .background{
-            RoundedRectangle(cornerRadius: 12,
-                             style: .continuous)
-                .fill(.white)
-        }
-    }
-    
     var saveButtonView: some View {
         Button(action: {
-            viewModel.saveNewCard()
+            viewModel.createWallet()
             if !viewModel.hasError {
-                dismiss()
+                session.register()
             }
         }) {
             Text("save".localized)
@@ -138,9 +96,9 @@ private extension NewCardView {
     
     var closeButtonView: some View {
         Button {
-            dismiss()
+            dismiss.toggle()
         } label: {
-            Image(systemName: "xmark")
+            Image(systemName: "chevron.left")
                 .font(.title2)
                 .foregroundColor(.bcPurple)
         }
@@ -149,8 +107,10 @@ private extension NewCardView {
 }
 
 // MARK: - PreviewProvider
-struct NewCardView_Previews: PreviewProvider {
+struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        NewCardView(.init())
+        RegisterView()
+            .environmentObject(SessionManager())
     }
 }
+

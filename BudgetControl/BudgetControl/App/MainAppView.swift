@@ -19,6 +19,10 @@ struct MainAppView: View {
             case .onboarding:
                 OnboardingView(actionHandler: session.completeOnboarding)
                                 .transition(.opacity)
+            case .signup:
+                RegisterView()
+                    .transition(.asymmetric(insertion: .move(edge: .trailing),
+                                            removal: .opacity))
             default:
                 TabContainerView()
                     .environment(\.managedObjectContext, context)

@@ -19,6 +19,7 @@ extension Card {
     @NSManaged public var isSelected: Bool
     @NSManaged public var creationDate: Date
     @NSManaged public var id: UUID
+    @NSManaged public var wallet: Wallet?
     @NSManaged public var transactions: Set<Transaction>?
     public var transactionList: [Transaction] {
         guard let setOfTransation = transactions else { return [] }
@@ -48,6 +49,13 @@ extension Card: Identifiable {
     
     static var allCardsRequest: NSFetchRequest<Card> {
         let request: NSFetchRequest<Card> = Card.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Card.creationDate, ascending: false)]
+        return request
+    }
+    
+    func cardsRequest(for wallet: Wallet) -> NSFetchRequest<Card> {
+        let request: NSFetchRequest<Card> = Card.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(Wallet.cards), wallet)
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Card.creationDate, ascending: false)]
         return request
     }

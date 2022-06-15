@@ -20,8 +20,15 @@ struct TransactionsListView: View {
             if let selectedCard = cards.filter({ $0.isSelected == true }).first {
                 if selectedCard.transactionList.count > 0 {
                     if shouldFilter {
-                        ForEach(selectedCard.transactionList.filter { return $0.type == filterSelected }) { transaction in
-                            TransactionCellView(transaction: transaction)
+                        let filteredList = selectedCard.transactionList.filter { return $0.type == filterSelected }
+                        if filteredList.count > 0 {
+                            ForEach(filteredList) { transaction in
+                                TransactionCellView(transaction: transaction)
+                            }
+                        } else {
+                            emptyListView
+                                .padding(.top, -12)
+                                .padding(.bottom, 12)
                         }
                     } else {
                         ForEach(selectedCard.transactionList) { transaction in
@@ -35,6 +42,7 @@ struct TransactionsListView: View {
                 emptyListView
             }
         }
+        .padding(.bottom, 12)
     }
 }
 

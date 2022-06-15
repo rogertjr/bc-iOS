@@ -22,7 +22,7 @@ extension OnboardingItem {
               title: "Track your expenses",
               content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         .init(emoji: "📈",
-              title: "Organize your wallet",
+              title: "Organize your finances",
               content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
     ]
 }

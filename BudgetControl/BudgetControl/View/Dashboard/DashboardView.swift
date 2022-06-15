@@ -29,12 +29,12 @@ struct DashboardView: View {
                     profileButtonHeaderView
                 }
                 
-                if viewModel.cards.count > 0 {
-                    CardCarouselView(cards: viewModel.cards)
+                if viewModel.wallet?.cardList.count ?? 0 > 0 {
+                    CardCarouselView(cards: viewModel.wallet?.cardList ?? [])
                     customSegmentedControl()
                         .padding(.top)
                     
-                    TransactionsListView(cards: viewModel.cards,
+                    TransactionsListView(cards: viewModel.wallet?.cardList ?? [],
                                          shouldFilter: true,
                                          filterSelected: viewModel.filterTabSelected)
                         .padding([.top, .leading, .trailing])
@@ -64,11 +64,13 @@ struct DashboardView: View {
         }
         .fullScreenCover(isPresented: $viewModel.goToNewCard) {
         } content: {
-            NewCardView()
+            NewCardView(.init(viewModel.currentWallet))
         }
         .overlay(alignment: .bottomTrailing) {
             addButton()
         }
+        .alert(isPresented: $viewModel.hasError,
+               error: viewModel.error) { }
     }
 }
 
@@ -80,7 +82,7 @@ private extension DashboardView {
                 .font(.caption)
                 .fontWeight(.semibold)
             
-            Text("User")
+            Text(viewModel.wallet?.userName ?? "")
                 .font(.title2.bold())
                 .foregroundColor(Color.bcPurple)
         }
@@ -113,7 +115,7 @@ private extension DashboardView {
     @ViewBuilder
     func addButton() -> some View{
         Button {
-            viewModel.cards.count > 0
+            viewModel.wallet?.cardList.count ?? 0 > 0
                 ? viewModel.goToNewTransaction.toggle()
                 : viewModel.goToNewCard.toggle()
         } label: {
@@ -150,7 +152,7 @@ private extension DashboardView {
                     })
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        withAnimation{ viewModel.filterTabSelected = tab }
+                        withAnimation { viewModel.filterTabSelected = tab }
                     }
             }
         }

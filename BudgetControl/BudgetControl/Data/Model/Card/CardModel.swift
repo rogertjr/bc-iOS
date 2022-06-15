@@ -19,7 +19,6 @@ enum CardColors: String, CaseIterable {
     case black = "Black"
 }
 
-let cardColors: [String] = []
 struct CardModel: Identifiable {
     // MARK: - Properties
     private var card: Card

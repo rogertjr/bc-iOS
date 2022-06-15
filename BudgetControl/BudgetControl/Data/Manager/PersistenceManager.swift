@@ -54,12 +54,32 @@ final class PersistenceManager {
 // MARK: - Util
 extension PersistenceManager {
     typealias CardHandler = (Result<Card, Error>) -> Void
+    
+    // MARK: - Wallet
+    func createWallet(
+        username: String,
+        completion: @escaping (Result<Wallet, Error>) -> Void
+    ) {
+        let wallet = Wallet(context: persistentContainer.viewContext)
+        wallet.id = UUID()
+        wallet.creationDate = Date()
+        wallet.userName = username
+        wallet.cards = []
+        
+        do {
+            try context.save()
+            completion(.success(wallet))
+        } catch {
+            completion(.failure(error))
+        }
+    }
 
     // MARK: - Cards
     func createCard(
         title: String,
         color: String,
-        completion: CardHandler
+        in wallet: Wallet,
+        completion: @escaping CardHandler
     ) {
         let card = Card(context: persistentContainer.viewContext)
         card.id = UUID()
@@ -68,6 +88,8 @@ extension PersistenceManager {
         card.title = title
         card.color = color
         card.transactions = []
+        
+        wallet.addToCards(card)
         
         do {
             try context.save()

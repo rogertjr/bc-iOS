@@ -18,6 +18,9 @@ final class NewTransactionViewModel: ObservableObject {
     @Published var date: Date = Date()
     @Published var transactionTitle: String = ""
     
+    @Published var hasError = false
+    @Published var error: TransactionError?
+    
     var isAbleToContinue: Bool {
         !transactionTitle.isEmpty && type != .all && amount != nil
     }
@@ -49,9 +52,26 @@ final class NewTransactionViewModel: ObservableObject {
                                                     selectedCard: selectedCard) { result in
             switch result {
             case .success:
+                self.hasError = false
                 print("✅ - Transaction successfully saved")
             case .failure(let error):
+                self.hasError = true
+                self.error = .transactionPersistance
                 print("⚠️ - \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
+// MARK: - Error Handler
+extension NewTransactionViewModel {
+    enum TransactionError: LocalizedError {
+        case transactionPersistance
+        
+        var errorDescription: String? {
+            switch self {
+            case .transactionPersistance:
+                return "⚠️ - Error while saving transaction"
             }
         }
     }

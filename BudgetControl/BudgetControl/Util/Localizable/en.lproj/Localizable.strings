@@ -14,6 +14,10 @@
 "expense" = "Saída";
 "continue" = "Continuar";
 
+// Register
+"register_title" = "Criar carteira";
+"register_username" = "Seu nome";
+
 // Dashboard
 "hello" = "Olá";
 "hello_comma" = "Olá,";

@@ -12,19 +12,23 @@ import CoreData
 final class DashboardViewModel: NSObject, ObservableObject {
     // MARK: - Properties
     private (set) var context: NSManagedObjectContext
+    private (set) var currentWallet: Wallet?
+    private (set) var selectedCard: Card? 
     
-    @Published var cards = [CardModel]()
-    private (set) var selectedCard: Card?
+    @Published var wallet: WalletModel?
+    @Published var filterTabSelected: TransactionType = .income
     @Published var goToNewTransaction: Bool = false
     @Published var goToNewCard: Bool = false
-    @Published var filterTabSelected: TransactionType = .income
+
+    @Published var hasError = false
+    @Published var error: DashboardError?
     
-    private let fetchedResultsController: NSFetchedResultsController<Card>
+    private let fetchedResultsController: NSFetchedResultsController<Wallet>
     
     // MARK: - Init
     init(_ context: NSManagedObjectContext) {
         self.context = context
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: Card.allCardsRequest,
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: Wallet.allWalletRequest,
                                                               managedObjectContext: context,
                                                               sectionNameKeyPath: nil,
                                                               cacheName: nil)
@@ -33,11 +37,18 @@ final class DashboardViewModel: NSObject, ObservableObject {
         
         do {
             try fetchedResultsController.performFetch()
-            guard let cards = fetchedResultsController.fetchedObjects else { return }
-            self.selectedCard = cards.filter({ $0.isSelected == true }).first
-            self.cards = cards.map(CardModel.init)
+            guard let wallet = fetchedResultsController.fetchedObjects,
+                let walletModel = wallet.map(WalletModel.init).first
+            else { return }
+            self.currentWallet = wallet.first
+            self.wallet = walletModel
+
+            self.selectedCard = walletModel.cards.filter({ $0.isSelected == true }).first
+            self.hasError = false
         } catch {
-            print("⚠️ Error while fetching cards - \(error.localizedDescription)")
+            self.hasError = true
+            self.error = .walletFetch
+            print("⚠️ - \(error.localizedDescription)")
         }
     }
 }
@@ -45,8 +56,26 @@ final class DashboardViewModel: NSObject, ObservableObject {
 // MARK: - NSFetchedResultsControllerDelegate
 extension DashboardViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        guard let cards = controller.fetchedObjects as? [Card] else { return }
-        self.cards = cards.map(CardModel.init)
-        self.selectedCard = cards.filter({ $0.isSelected == true }).first
+        guard let wallet = fetchedResultsController.fetchedObjects,
+            let walletModel = wallet.map(WalletModel.init).first
+        else { return }
+        self.currentWallet = wallet.first
+        self.wallet = walletModel
+        
+        selectedCard = walletModel.cards.filter({ $0.isSelected == true }).first
+    }
+}
+
+// MARK: - Error Handler
+extension DashboardViewModel {
+    enum DashboardError: LocalizedError {
+        case walletFetch
+        
+        var errorDescription: String? {
+            switch self {
+            case .walletFetch:
+                return "⚠️ - Error while fetching wallet data"
+            }
+        }
     }
 }

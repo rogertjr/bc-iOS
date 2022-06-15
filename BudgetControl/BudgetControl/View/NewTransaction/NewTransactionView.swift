@@ -44,6 +44,8 @@ struct NewTransactionView: View {
         .overlay(alignment: .topTrailing) {
             closeButtonView
         }
+        .alert(isPresented: $viewModel.hasError,
+               error: viewModel.error) { }
     }
 }
 
@@ -137,7 +139,9 @@ private extension NewTransactionView {
     var saveButtonView: some View {
         Button(action: {
             viewModel.saveNewTransaction()
-            dismiss()
+            if !viewModel.hasError {
+                dismiss()
+            }
         }) {
             Text("save".localized)
                 .font(.title3)
