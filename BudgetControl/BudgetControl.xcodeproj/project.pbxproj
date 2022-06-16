@@ -133,9 +133,9 @@
 		37591183283DBA3B003B6DAC /* BudgetControl */ = {
 			isa = PBXGroup;
 			children = (
-				3759119E283E6AF7003B6DAC /* Util */,
+				3759119E283E6AF7003B6DAC /* Utilities */,
 				37591197283E69FA003B6DAC /* Data */,
-				37591193283DBAEC003B6DAC /* View */,
+				37591193283DBAEC003B6DAC /* Features */,
 				37591192283DBAE4003B6DAC /* App */,
 				37591188283DBA3E003B6DAC /* Assets.xcassets */,
 				3759118A283DBA3E003B6DAC /* Preview Content */,
@@ -161,7 +161,7 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		37591193283DBAEC003B6DAC /* View */ = {
+		37591193283DBAEC003B6DAC /* Features */ = {
 			isa = PBXGroup;
 			children = (
 				37973B382843A86C00158E5D /* Shared */,
@@ -172,7 +172,7 @@
 				375911AE283E813A003B6DAC /* NewTransaction */,
 				37591194283DBAF4003B6DAC /* Dashboard */,
 			);
-			path = View;
+			path = Features;
 			sourceTree = "<group>";
 		};
 		37591194283DBAF4003B6DAC /* Dashboard */ = {
@@ -206,15 +206,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		3759119E283E6AF7003B6DAC /* Util */ = {
+		3759119E283E6AF7003B6DAC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3759119F283E6AFD003B6DAC /* Components */,
 				37973B272843942C00158E5D /* Custom */,
 				37973B1F2843472D00158E5D /* Localizable */,
 				375911ED2842BF2E003B6DAC /* Extensions */,
-				3759119F283E6AFD003B6DAC /* Components */,
 			);
-			path = Util;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		3759119F283E6AFD003B6DAC /* Components */ = {
